@@ -29,9 +29,7 @@ export function* Login(api, action) {
 export function* Logout(api, action) {
   try {
     const { token } = action;
-    console.log('token >>', token)
     const response = yield call(api.logout, token);
-    console.log('response >>', response)
     if (response.ok && response.status === 201) {
       yield put(AuthRedux.logoutSuccess(response.data));
     } else {

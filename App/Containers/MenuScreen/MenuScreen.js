@@ -23,7 +23,11 @@ function MenuScreen({ navigation }) {
 
   useEffect(() => {
     if (isLogout && !fetchingLogout) {
-      if (!errorLogout) {
+      console.log('errorLogout: ', errorLogout)
+      if (!!errorLogout) {
+        Alert.alert('Error')
+        setIsLogout(false)
+      } else {
         navigation.reset({
           index: 0,
           routes: [{
@@ -31,8 +35,6 @@ function MenuScreen({ navigation }) {
           }]
         })
         setIsLogout(false)
-      } else {
-        Alert.alert('Error: ', errorSignOut)
       }
     }
   }, [fetchingLogout])
@@ -42,9 +44,13 @@ function MenuScreen({ navigation }) {
     setIsLogout(true)
   }
 
+  const onPressProfile = () => {
+    navigation.navigate('ProfileScreen')
+  }
+
   return (
     <View style={styles.viewOnScreen}>
-      <DRSMenuButton title={'My profile'} imageSource={null} />
+      <DRSMenuButton title={'My profile'} imageSource={null} onPress={onPressProfile}/>
       <DRSMenuButton title={'My Message'} imageSource={Images.message} />
       <DRSMenuButton title={'Blocked people'} imageSource={Images.block} />
       <DRSMenuButton

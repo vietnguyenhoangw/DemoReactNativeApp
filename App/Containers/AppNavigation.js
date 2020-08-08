@@ -19,8 +19,7 @@ const AuthStack = createStackNavigator()
 function AuthStacks() {
   return (
       <AuthStack.Navigator initialRouteName="LoginScreen">
-        {/* <AuthStack.Screen name="LoginScreen" component={LoginScreen} /> */}
-        <AuthStack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
       </AuthStack.Navigator>
   )
 }
@@ -47,6 +46,7 @@ function AppStacks() {
   return (
     <AppStack.Navigator>
       <AppStack.Screen name={'HomeTab'} component={HomeTabs} />
+      <AppStack.Screen name="ProfileScreen" component={ProfileScreen} />
     </AppStack.Navigator>
   )
 }

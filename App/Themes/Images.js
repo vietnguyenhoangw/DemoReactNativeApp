@@ -10,7 +10,7 @@ const images = {
     subMenu: require('../Images/icons/subMenu.png'),
     earth: require('../Images/icons/earth.png'),
     defaultPhoto: require('../Images/icons/defaultPhoto.png'),
-    camera: require('../Images/icons/camera.png'),
+    camera: require('../Images/icons/camera.png')
 }
 
 export default images
