@@ -3,15 +3,14 @@ import {
 } from 'react-native';
 
 // theme
-import { Metrics, Colors } from '../../../Themes'
+import { Metrics, Colors, Images } from '../../../Themes'
 
 export default StyleSheet.create({
     viewOnScreen: {
         flex: 1
     },
     coverPhoto: {
-        height: Metrics.screenHeight / 3.5,
-        backgroundColor: '#ff00ff'
+        height: Metrics.screenHeight / 3.5
     },
     avatarPhoto: {
         height: Metrics.quintupleBaseMargin * 2,
@@ -36,7 +35,7 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
     descriptions: {
-        backgroundColor: Colors.veryLightGrey,
+        backgroundColor: Colors.greyLight,
         padding: Metrics.baseMargin,
         marginHorizontal: Metrics.doubleBaseMargin,
     }, 

@@ -5,6 +5,9 @@ import { TouchableOpacity, View, Image } from 'react-native'
 import { Images } from '../../../Themes'
 import styles from '../DRSImageButton/Styles/DRSImageButtonStyle'
 
+// components
+import { DRSImage } from '../../DRSImage'
+
 function DRSImageButton({
     imagesStyle,
     sourceImage,
@@ -13,7 +16,7 @@ function DRSImageButton({
     sourceIcon}) {
     return (
         <TouchableOpacity style={styles.containerStyle} onPress={onPressBtn}>
-            <Image style={imagesStyle} source={sourceImage} />
+            <DRSImage imageStyles={imagesStyle} source={sourceImage} />
             {btnOnPressAble && (
                 <View style={styles.containerCameraIcon}>
                     <Image

@@ -9,14 +9,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     zIndex: 10,
     marginTop: 20,
-    marginLeft: Metrics.screenWidth / 3
+    marginHorizontal: Metrics.doubleBaseMargin,
+    padding: Metrics.baseMargin,
+    backgroundColor: Colors.greyLight
   },
   commonBtn: {
     borderWidth: 1,
     borderColor: Colors.white,
-    width: Metrics.quadrupleBaseMargin,
+    width: Metrics.quadrupleBaseMargin * 2,
     height: Metrics.quadrupleBaseMargin,
-    borderRadius: Metrics.halfQuintupleBaseMargin,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.nightRider
@@ -28,6 +29,7 @@ export default StyleSheet.create({
   },
   textItemMenu: {
     color: Colors.nightRider,
-    marginLeft: Metrics.baseMargin
+    marginLeft: Metrics.baseMargin,
+    fontWeight: 'bold'
   }
 })

@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, Alert, ScrollView} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
 
 // redux
+import {useSelector, useDispatch} from 'react-redux';
 import AuthActions from '../../Redux/AuthRedux';
 
 // import styles
@@ -50,7 +50,7 @@ function LoginScreen({navigation}) {
     Alert.alert(
       message,
       null,
-      [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+      [{text: 'OK'}],
       {cancelable: false},
     );
   }

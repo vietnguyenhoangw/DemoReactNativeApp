@@ -1,5 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, Alert, ScrollView, Image} from 'react-native';
+import {View, Text} from 'react-native';
+
+
+// redux
+import {useSelector, useDispatch} from 'react-redux';
+import AuthActions from '../../Redux/AuthRedux';
 
 // styles
 import styles from './Styles/ProfileScreenStyles'
@@ -8,28 +13,53 @@ import styles from './Styles/ProfileScreenStyles'
 import { Images } from '../../Themes'
 
 //components
-import { DRSMultiplePhoto } from '../../Components'
+import { DRSMultiplePhoto, DRSFlatlist, DRSImage } from '../../Components'
+
+// fake-data
+import { fakeData } from '../../Configs/fakeData'
 
 function ProfileScreen() {
-    return (
-        <View style={styles.viewOnScreen}>
-            <Image style={styles.coverPhoto} source={Images.friendsBackground} />
-            <Image style={styles.avatarPhoto} source={Images.friendsBackground} />
-            <View style={styles.nameContaint}>
-                <Text style={styles.nameText}>Daniel Nguyễn</Text>
+    const userState = useSelector((state) => state.user);
+    const userData = userState.userData.user
+
+    console.log('userState: ', userData)
+
+    if (fakeData) {
+        const renderHeader = () => {
+            return (
+                <View>
+                    <DRSImage imageStyles={styles.coverPhoto} source={userData.coverUrl} />
+                    <DRSImage imageStyles={styles.avatarPhoto} source={userData.avatarUrl} />
+                    <View style={styles.nameContaint}>
+                        <Text style={styles.nameText}>{userData.fullName}</Text>
+                    </View>
+                    <View style={styles.descriptions}>
+                        <Text style={styles.descriptionsText}>{userData.bio ? userData.bio : '...'}</Text>
+                    </View>
+                    <DRSMultiplePhoto
+                        containerStyle={styles.multiplePhotoContainer}
+                        btnOnPressAble={false}
+                        sourceImage1={Images.friendsBackground}
+                        sourceImage2={Images.friendsBackground}
+                        sourceImage3={Images.friendsBackground}
+                    />
+                </View>
+            )
+        }
+
+        return (
+            <View style={styles.viewOnScreen}>
+                <DRSFlatlist
+                    renderHeader={renderHeader}
+                    listData={fakeData}
+                />
             </View>
-            <View style={styles.descriptions}>
-                <Text style={styles.descriptionsText}>HCM.C - 22 years old</Text>
-            </View>
-            <DRSMultiplePhoto
-                containerStyle={styles.multiplePhotoContainer}
-                btnOnPressAble={false}
-                sourceImage1={Images.friendsBackground}
-                sourceImage2={Images.friendsBackground}
-                sourceImage3={Images.friendsBackground}
-            />
+        );
+    } else {
+        <View>
+            <Text>Error</Text>
         </View>
-    );
+    }
 }
 
 export default ProfileScreen;
