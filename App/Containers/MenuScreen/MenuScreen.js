@@ -44,6 +44,7 @@ function MenuScreen({ navigation }) {
 
   return (
     <View style={styles.viewOnScreen}>
+      <DRSMenuButton title={'My profile'} imageSource={null} />
       <DRSMenuButton title={'My Message'} imageSource={Images.message} />
       <DRSMenuButton title={'Blocked people'} imageSource={Images.block} />
       <DRSMenuButton

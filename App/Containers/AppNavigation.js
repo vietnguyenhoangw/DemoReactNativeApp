@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './HomeScreen/index'
 import { LoginScreen } from './LoginScreen/index'
 import { MenuScreen } from './MenuScreen/index'
+import { ProfileScreen } from './ProfileScreen/'
 
 // HomeTab
 import { DRSTabBar } from '../Components'
@@ -18,7 +19,8 @@ const AuthStack = createStackNavigator()
 function AuthStacks() {
   return (
       <AuthStack.Navigator initialRouteName="LoginScreen">
-        <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+        {/* <AuthStack.Screen name="LoginScreen" component={LoginScreen} /> */}
+        <AuthStack.Screen name="ProfileScreen" component={ProfileScreen} />
       </AuthStack.Navigator>
   )
 }
