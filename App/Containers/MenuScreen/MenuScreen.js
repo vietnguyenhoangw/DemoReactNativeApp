@@ -19,7 +19,7 @@ import { color } from 'react-native-reanimated';
 
 function MenuScreen({ navigation }) {
   const dispatch = useDispatch()
-  const userState = useSelector((state) => state.user)
+  const userState = useSelector((state) => state.auth)
   const userData = userState.userData.user
   const token = userState.userData.token
   const { fetchingLogout, errorLogout } = userState;

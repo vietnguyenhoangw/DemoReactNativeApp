@@ -15,7 +15,7 @@ import {isValidEmail, isValidPassword} from '../../Utils/validator';
 import { RDSTextInputWithTitle, RDSLinkButton, DRSLoading, DRSTabBar } from '../../Components/index'
 
 function LoginScreen({navigation}) {
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const requestLogin = (email, password) =>
     dispatch(AuthActions.loginEmailRequest(email, password));

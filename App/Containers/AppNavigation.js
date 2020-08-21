@@ -9,6 +9,7 @@ import { HomeScreen } from './HomeScreen/index'
 import { LoginScreen } from './LoginScreen/index'
 import { MenuScreen } from './MenuScreen/index'
 import { ProfileScreen } from './ProfileScreen/'
+import  SplashScreen  from './SplashScreen'
 
 // HomeTab
 import { DRSTabBar } from '../Components'
@@ -57,7 +58,8 @@ const Stack = createStackNavigator()
 function AppNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName={'SplashScreen'} headerMode={'none'}>
+        <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
         <Stack.Screen name={'AuthStack'} component={AuthStacks} />
         <Stack.Screen name={'AppStack'} component={AppStacks} />
       </Stack.Navigator>

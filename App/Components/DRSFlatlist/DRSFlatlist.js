@@ -12,12 +12,15 @@ function DRSFlatlist({listData, renderHeader}) {
         return null
     }
 
-    const renderItem = ({ item }) => (
-        <View style={styles.item}>
-            <Text style={styles.title}>{item.title}</Text>
-        </View>
-    );
-
+    const renderItem = ({ item }) => {
+        console.log('item: ', item)
+        return(
+            <View style={styles.item}>
+                <Text style={styles.title}>{item.title}</Text>
+            </View>
+        ) 
+    }
+        
     return (
         <View style={[styles.container]}>
             {listData ? (

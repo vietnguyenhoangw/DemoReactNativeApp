@@ -19,7 +19,7 @@ import { DRSMultiplePhoto, DRSFlatlist, DRSImage } from '../../Components'
 import { fakeData } from '../../Configs/fakeData'
 
 function ProfileScreen() {
-    const userState = useSelector((state) => state.user);
+    const userState = useSelector((state) => state.auth);
     const userData = userState.userData.user
 
     console.log('userState: ', userData)

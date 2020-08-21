@@ -11,6 +11,10 @@ const {Types, Creators} = createActions({
   logoutRequest: ['token'],
   logoutSuccess: [],
   logoutFailure: ['errorLogout'],
+
+  checkAuthTokenRequest: [''],
+  checkAuthTokenSuccess: ['userData'],
+  checkAuthTokenFailure: ['errorCheckAuthToken'],
 });
 
 export const AuthTypes = Types;
@@ -24,12 +28,15 @@ export const INITIAL_STATE = Immutable({
   fetchingLoginEmail: false,
 
   errorLogout: null,
-  fetchingLogout: false
+  fetchingLogout: false,
+
+  errorCheckAuthToken: null,
+  fetchingCheckAuthToken: false,
+  isAuthenticated: false
 });
 
 /* ------------- Reducers ------------- */
 export const loginEmailRequest = (state) => {
-  console.log('state: ', state);
   return state.merge({ fetchingLoginEmail: true, errorLoginEmail: null });
 };
 export const loginEmailSuccess = (state, { userData }) =>
@@ -45,6 +52,14 @@ export const logoutSuccess = (state) =>
 export const logoutFailure = (state, { errorLogout }) =>
   state.merge({ fetchingLogout: false, errorLogout });
 
+export const checkAuthTokenRequest = (state) => {
+  return state.merge({ fetchingCheckAuthToken: true, errorCheckAuthToken: null });
+};
+export const checkAuthTokenSuccess = (state, { userData }) =>
+  state.merge({ fetchingCheckAuthToken: false, isAuthenticated: true, userData });
+export const checkAuthTokenFailure = (state, { errorCheckAuthToken }) =>
+  state.merge({ fetchingCheckAuthToken: false, errorCheckAuthToken });
+
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_EMAIL_REQUEST]: loginEmailRequest,
@@ -53,7 +68,11 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.LOGOUT_REQUEST]: logoutRequest,
   [Types.LOGOUT_SUCCESS]: logoutSuccess,
-  [Types.LOGOUT_FAILURE]: logoutFailure
+  [Types.LOGOUT_FAILURE]: logoutFailure,
+
+  [Types.CHECK_AUTH_TOKEN_REQUEST]: checkAuthTokenRequest,
+  [Types.CHECK_AUTH_TOKEN_SUCCESS]: checkAuthTokenSuccess,
+  [Types.CHECK_AUTH_TOKEN_FAILURE]: checkAuthTokenFailure
 });
 
 /* ------------- Selectors ------------- */
