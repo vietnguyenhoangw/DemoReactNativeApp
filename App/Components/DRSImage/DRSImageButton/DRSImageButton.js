@@ -9,13 +9,14 @@ import styles from '../DRSImageButton/Styles/DRSImageButtonStyle'
 import { DRSImage } from '../../DRSImage'
 
 function DRSImageButton({
+    btnContainer,
     imagesStyle,
     sourceImage,
     btnOnPressAble,
     onPressBtn,
     sourceIcon}) {
     return (
-        <TouchableOpacity style={styles.containerStyle} onPress={onPressBtn}>
+        <TouchableOpacity style={[styles.btnContainer, btnContainer]} onPress={onPressBtn}>
             <DRSImage imageStyles={imagesStyle} source={sourceImage} />
             {btnOnPressAble && (
                 <View style={styles.containerCameraIcon}>

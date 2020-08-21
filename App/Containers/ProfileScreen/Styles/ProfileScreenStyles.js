@@ -7,7 +7,8 @@ import { Metrics, Colors, Images } from '../../../Themes'
 
 export default StyleSheet.create({
     viewOnScreen: {
-        flex: 1
+        flex: 1,
+        backgroundColor: Colors.white
     },
     coverPhoto: {
         height: Metrics.screenHeight / 3.5

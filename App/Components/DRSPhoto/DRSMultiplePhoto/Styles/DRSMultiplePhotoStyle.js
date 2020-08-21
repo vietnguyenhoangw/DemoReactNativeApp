@@ -16,6 +16,9 @@ export default StyleSheet.create({
     resizeMode: 'cover',
     backgroundColor: Colors.greyLight,
     borderColor: Colors.veryLightGrey,
-    borderWidth: 1
+    borderWidth: 1,
+  },
+  btnContainer: {
+    padding: 0
   }
 })

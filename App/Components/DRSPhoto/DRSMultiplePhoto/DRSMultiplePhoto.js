@@ -24,6 +24,7 @@ function DRSMultiplePhoto({
   return (
     <View style={[styles.listImageWrapper, containerStyle]}>
       <DRSImageButton
+        btnContainer={styles.btnContainer}
         imagesStyle={[styles.image, imagesStyle]}
         sourceImage={sourceImage1 ? sourceImage1 : Images.defaultPhoto}
         btnOnPressAble={btnOnPressAble}
@@ -31,6 +32,7 @@ function DRSMultiplePhoto({
         sourceIcon={Images.camera}
       />
       <DRSImageButton
+        btnContainer={styles.btnContainer}
         imagesStyle={[styles.image, imagesStyle]}
         sourceImage={sourceImage2 ? sourceImage2 : Images.defaultPhoto}
         btnOnPressAble={btnOnPressAble}
@@ -38,6 +40,7 @@ function DRSMultiplePhoto({
         sourceIcon={Images.camera}
       />
       <DRSImageButton
+        btnContainer={styles.btnContainer}
         imagesStyle={[styles.image, imagesStyle]}
         sourceImage={sourceImage3 ? sourceImage3 : Images.defaultPhoto}
         btnOnPressAble={btnOnPressAble}

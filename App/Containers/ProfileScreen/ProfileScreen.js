@@ -22,8 +22,6 @@ function ProfileScreen() {
     const userState = useSelector((state) => state.auth);
     const userData = userState.userData.user
 
-    console.log('userState: ', userData)
-
     if (fakeData) {
         const renderHeader = () => {
             return (

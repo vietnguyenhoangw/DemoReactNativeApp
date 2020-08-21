@@ -4,6 +4,9 @@ import { View, Text, FlatList, RefreshControl } from 'react-native'
 // style
 import styles from './Styles/DRSFlatlistStyle'
 
+// // component
+import { DRSPostCard } from '../index'
+
 function DRSFlatlist({listData, renderHeader}) {
     const processRenderHeader = () => {
         if (renderHeader) {
@@ -15,9 +18,10 @@ function DRSFlatlist({listData, renderHeader}) {
     const renderItem = ({ item }) => {
         console.log('item: ', item)
         return(
-            <View style={styles.item}>
-                <Text style={styles.title}>{item.title}</Text>
-            </View>
+            // <View style={styles.item}>
+            //     <Text style={styles.title}>{item.title}</Text>
+            // </View>
+            <DRSPostCard />
         ) 
     }
         
