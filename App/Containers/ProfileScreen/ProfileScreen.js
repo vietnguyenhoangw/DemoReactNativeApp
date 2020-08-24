@@ -32,7 +32,7 @@ function ProfileScreen() {
                         <Text style={styles.nameText}>{userData.fullName}</Text>
                     </View>
                     <View style={styles.descriptions}>
-                        <Text style={styles.descriptionsText}>{userData.bio ? userData.bio : '...'}</Text>
+                        <Text style={styles.descriptionsText}>{userData.bio ? userData.bio : '. . .'}</Text>
                     </View>
                     <DRSMultiplePhoto
                         containerStyle={styles.multiplePhotoContainer}

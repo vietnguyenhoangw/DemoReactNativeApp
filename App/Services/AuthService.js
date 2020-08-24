@@ -1,6 +1,7 @@
 import apiSauce from 'apisauce';
+import ApiConfig from '../Configs/ApiConfig'
 
-const create = (baseURL = 'http://00.00.00.00:0000/v0' + '/auth') => {
+const create = (baseURL = ApiConfig.baseURL + '/auth') => {
   const api = apiSauce.create({
     baseURL,
     headers: {
