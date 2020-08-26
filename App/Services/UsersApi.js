@@ -21,9 +21,15 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return api.get(`${userId}/featured-photos`)
   }
 
+  function getPost(token) {
+    api.setHeaders({ Authorization: `Bearer ${token}` })
+    return api.get('me/polytags')
+  }
+
   return {
     getMeApi,
-    getFeaturedPhotos
+    getFeaturedPhotos,
+    getPost
   };
 };
 
