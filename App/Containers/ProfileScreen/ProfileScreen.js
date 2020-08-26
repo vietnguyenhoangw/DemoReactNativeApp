@@ -5,6 +5,7 @@ import {View, Text} from 'react-native';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 import AuthActions from '../../Redux/AuthRedux';
+import UserActions from '../../Redux/UserRedux'
 
 // styles
 import styles from './Styles/ProfileScreenStyles'
@@ -21,6 +22,17 @@ import { fakeData } from '../../Configs/fakeData'
 function ProfileScreen() {
     const userState = useSelector((state) => state.auth);
     const userData = userState.userData.user
+    const dispatch = useDispatch();
+    const featuredPhotos = userData.featuredPhotos
+
+    let newImageUrlList = []
+    featuredPhotos.filter((item => {
+      newImageUrlList.push(item.url)
+    }))
+
+    // useEffect(() => {
+    //     dispatch(UserActions.getFeaturedPhotosRequest(userId))
+    // }, [])
 
     if (fakeData) {
         const renderHeader = () => {
@@ -37,9 +49,9 @@ function ProfileScreen() {
                     <DRSMultiplePhoto
                         containerStyle={styles.multiplePhotoContainer}
                         btnOnPressAble={false}
-                        sourceImage1={Images.friendsBackground}
-                        sourceImage2={Images.friendsBackground}
-                        sourceImage3={Images.friendsBackground}
+                        sourceImage1={newImageUrlList[0]}
+                        sourceImage2={newImageUrlList[1]}
+                        sourceImage3={newImageUrlList[2]}
                     />
                 </View>
             )

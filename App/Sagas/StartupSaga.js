@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 // Redux
 import AuthActions from '../Redux/AuthRedux'
 
-
 export function* startup(api, action) {
     /* Check authentication token */
   const userToken = yield AsyncStorage.getItem('accessToken')

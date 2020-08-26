@@ -61,3 +61,5 @@ buck-out/
 # History extensions
 .history/
 
+# API config
+App/Configs/ApiConfig.js
