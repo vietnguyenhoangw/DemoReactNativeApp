@@ -6,7 +6,7 @@ import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import AuthActions from '../../Redux/AuthRedux';
 import UserActions from '../../Redux/UserRedux'
-import PostActions from '../../Redux/PostRedux'
+// import PostActions from '../../Redux/PostRedux'
 
 // styles
 import styles from './Styles/ProfileScreenStyles'
@@ -31,9 +31,9 @@ function ProfileScreen() {
       newImageUrlList.push(item.url)
     }))
 
-    useEffect(() => {
-        dispatch(PostActions.getPostRequest())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(PostActions.getPostRequest())
+    // }, [])
 
     if (fakeData) {
         const renderHeader = () => {

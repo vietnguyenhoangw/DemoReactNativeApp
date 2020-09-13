@@ -8,13 +8,13 @@ import UsersApi from '../Services/UsersApi'
 import { AuthTypes } from '../Redux/AuthRedux';
 import { StartupTypes } from '../Redux/StartupRedux'
 import { UserTypes } from '../Redux/UserRedux'
-import { PostTypes } from '../Redux/PostRedux'
+// import { PostTypes } from '../Redux/PostRedux'
 
 // saga
 import { Login, Logout, checkAuthTokenSaga } from './AuthSaga';
 import { startup } from './StartupSaga';
 import { getFeaturedPhotos } from './UserSaga'
-import { getPost } from './PostSaga'
+// import { getPost } from './PostSaga'
 
 // api
 const authApi = AuthApi.create();
@@ -33,6 +33,6 @@ export default function* rootSaga() {
   yield all([takeLatest(UserTypes.GET_FEATURED_PHOTOS_REQUEST, getFeaturedPhotos, usersApi)]);
 
   // post
-  yield all([takeLatest(PostTypes.GET_POST_REQUEST, getPost, usersApi)]);
+  // yield all([takeLatest(PostTypes.GET_POST_REQUEST, getPost, usersApi)]);
 
 }

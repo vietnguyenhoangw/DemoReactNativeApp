@@ -1,51 +1,59 @@
-import React, { useEffect } from 'react'
-import { SafeAreaView, ActivityIndicator, StyleSheet } from 'react-native'
+import React, {useEffect} from 'react';
+import {SafeAreaView, ActivityIndicator, StyleSheet, Text} from 'react-native';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 
 // function
-import { usePrevious } from '../Functions/AppFunction'
+import {usePrevious} from '../Functions/AppFunction';
 
 function SplashScreen({navigation}) {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-    const userData = useSelector((state) => state.auth.userData)
-    const fetchingCheckAuthToken = useSelector((state) => state.auth.fetchingCheckAuthToken)
-    const preFetchingCheckAuthToken = usePrevious(fetchingCheckAuthToken)
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const userData = useSelector((state) => state.auth.userData);
+  const fetchingCheckAuthToken = useSelector(
+    (state) => state.auth.fetchingCheckAuthToken,
+  );
+  const preFetchingCheckAuthToken = usePrevious(fetchingCheckAuthToken);
 
-    useEffect(() => {
-        if (userData) {
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      if (userData) {
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'AppStack'}],
+        });
+      }
+      clearTimeout(timeOut);
+    }, 1000);
+  }, [userData]);
+
+  useEffect(() => {
+    if (preFetchingCheckAuthToken && !fetchingCheckAuthToken) {
+      const timeOut = setTimeout(() => {
+        if (!isAuthenticated) {
           navigation.reset({
             index: 0,
-            routes: [{ name: 'AppStack' }]
-          })
+            routes: [{name: 'AuthStack'}],
+          });
         }
-      }, [userData])
-    
-      useEffect(() => {
-        if (preFetchingCheckAuthToken && !fetchingCheckAuthToken) {
-          if (!isAuthenticated) {
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'AuthStack' }]
-            })
-          }
-        }
-      }, [fetchingCheckAuthToken])
+        clearTimeout(timeOut);
+      }, 1000);
+    }
+  }, [fetchingCheckAuthToken]);
 
-    return(
-        <SafeAreaView style={styles.mainContainer}>
-            <ActivityIndicator />
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={styles.mainContainer}>
+      <ActivityIndicator />
+    </SafeAreaView>
+  );
 }
 
-export default SplashScreen
+export default SplashScreen;
 
 const styles = StyleSheet.create({
-    mainContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
-  })
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

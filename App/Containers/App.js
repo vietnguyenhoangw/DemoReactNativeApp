@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import store from '../Redux/CreateStore';
 import RootContainer from './RootContainer';
@@ -18,7 +18,7 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container : {
-      flex:1
-  }
-})
+  container: {
+    flex: 1,
+  },
+});

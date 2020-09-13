@@ -1,59 +1,61 @@
-
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Screens
-import { HomeScreen } from './HomeScreen/index'
-import { LoginScreen } from './LoginScreen/index'
-import { MenuScreen } from './MenuScreen/index'
-import { ProfileScreen } from './ProfileScreen/'
-import  SplashScreen  from './SplashScreen'
+import {HomeScreen} from './HomeScreen';
+import {LoginScreen} from './LoginScreen';
+import {MenuScreen} from './MenuScreen';
+import {ProfileScreen} from './ProfileScreen/';
+import SplashScreen from './SplashScreen';
+import {EditProfileScreen} from './EditProfileScreen';
+import {LocationScreen} from './LocationScreen'
 
 // HomeTab
-import { DRSTabBar } from '../Components'
+import {DRSTabBar} from '../Components';
 
 // auth stack
-const AuthStack = createStackNavigator()
+const AuthStack = createStackNavigator();
 
 function AuthStacks() {
   return (
-      <AuthStack.Navigator initialRouteName="LoginScreen">
-        <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
-      </AuthStack.Navigator>
-  )
+    <AuthStack.Navigator initialRouteName="LoginScreen">
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+    </AuthStack.Navigator>
+  );
 }
 
 // tab-bottom
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 function HomeTabs() {
   return (
     <Tab.Navigator
       backBehavior={'none'}
-      tabBar={(props) => <DRSTabBar {...props} />}
-    >
+      tabBar={(props) => <DRSTabBar {...props} />}>
       <Tab.Screen name={'HomeScreen'} component={HomeScreen} />
       <AppStack.Screen name={'MenuScreen'} component={MenuScreen} />
     </Tab.Navigator>
-  )
+  );
 }
 
 // app stack
-const AppStack = createStackNavigator()
+const AppStack = createStackNavigator();
 
 function AppStacks() {
   return (
     <AppStack.Navigator>
       <AppStack.Screen name={'HomeTab'} component={HomeTabs} />
       <AppStack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <AppStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <AppStack.Screen name="LocationScreen" component={LocationScreen} />
     </AppStack.Navigator>
-  )
+  );
 }
 
 // stack
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 function AppNavigation() {
   return (

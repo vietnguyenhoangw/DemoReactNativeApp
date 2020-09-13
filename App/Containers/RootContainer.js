@@ -1,24 +1,28 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
-import StartupActions from '../Redux/StartupRedux'
+import StartupActions from '../Redux/StartupRedux';
 
 // Navigation
-import AppNavigation from './AppNavigation'
+import AppNavigation from './AppNavigation';
+
+// screen
+import { LocationScreen } from '../Containers/LocationScreen'
 
 function RootContainer() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(StartupActions.startup())
-    }, [])
+  useEffect(() => {
+    dispatch(StartupActions.startup());
+  }, []);
 
-    return (
-        <>
-            <AppNavigation />
-        </>
-    )
+  return (
+    <>
+      <AppNavigation />
+      <LocationScreen />
+    </>
+  );
 }
 
-export default RootContainer
+export default RootContainer;

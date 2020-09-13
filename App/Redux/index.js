@@ -5,7 +5,8 @@ import {combineReducers} from 'redux';
 const reducers = combineReducers({
   auth: require('./AuthRedux').reducer,
   user: require('./UserRedux').reducer,
-  post: require('./PostRedux').reducer,
+  app: require('./AppRedux').reducer
+  // post: require('./PostRedux').reducer,
 });
 
 export default reducers;
