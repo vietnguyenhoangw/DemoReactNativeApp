@@ -13,7 +13,7 @@ import { UserTypes } from '../Redux/UserRedux'
 // saga
 import { Login, Logout, checkAuthTokenSaga } from './AuthSaga';
 import { startup } from './StartupSaga';
-import { getFeaturedPhotos } from './UserSaga'
+import { getFeaturedPhotos, getUserPost } from './UserSaga'
 // import { getPost } from './PostSaga'
 
 // api
@@ -31,6 +31,7 @@ export default function* rootSaga() {
 
   // user
   yield all([takeLatest(UserTypes.GET_FEATURED_PHOTOS_REQUEST, getFeaturedPhotos, usersApi)]);
+  yield all([takeLatest(UserTypes.GET_USER_POST_REQUEST, getUserPost, usersApi)]);
 
   // post
   // yield all([takeLatest(PostTypes.GET_POST_REQUEST, getPost, usersApi)]);

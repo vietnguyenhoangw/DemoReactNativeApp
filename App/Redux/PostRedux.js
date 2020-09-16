@@ -3,34 +3,34 @@ import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 const {Types, Creators} = createActions({
-    getPostRequest: [''],
-    getPostSuccess: ['postList'],
-    getPostFailure: ['errorGetPost'],
+  getOtherPostRequest: ['location'],
+  getOtherPostSuccess: ['otherPost'],
+  getOtherPostFailure: ['errorGetOtherPost'],
 });
 
-export const PostTypes = Types
-export default Creators
+export const UsePosrTypes = Types;
+export default Creators;
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
-    postList: null,
-  
-    errorGetPost: null,
-    fetchingGetPost: false,
-  });
+  otherPost: [],
+
+  errorOtherPost: null,
+  fetchingGetOtherPost: false,
+});
 
 /* ------------- Reducers ------------- */
-export const getPostRequest = (state) => {
-    return state.merge({ fetchingGetPost: true, errorGetPost: null });
-  };
-  export const getPostSuccess = (state, { postList }) =>
-    state.merge({ fetchingGetPost: false, postList });
-  export const getPostFailure = (state, { errorGetPost }) =>
-    state.merge({ fetchingGetPost: false, errorGetPost });
+export const getOtherPostRequest = (state) => {
+  return state.merge({fetchingGetOtherPost: true, errorOtherPost: null});
+};
+export const getOtherPostSuccess = (state, {otherPost}) =>
+  state.merge({fetchingGetOtherPost: false, otherPost});
+export const getOtherPostFailure = (state, {errorOtherPost}) =>
+  state.merge({fetchingGetOtherPost: false, errorOtherPost});
 
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
-    [Types.GET_POST_REQUEST]: getPostRequest,
-    [Types.GET_POST_SUCCESS]: getPostSuccess,
-    [Types.GET_POST_FAILURE]: getPostFailure,
-  });
+  [Types.GET_OTHER_POST_REQUEST]: getOtherPostRequest,
+  [Types.GET_OTHER_POST_SUCCESS]: getOtherPostSuccess,
+  [Types.GET_OTHER_POST_FAILURE]: getOtherPostFailure,
+});

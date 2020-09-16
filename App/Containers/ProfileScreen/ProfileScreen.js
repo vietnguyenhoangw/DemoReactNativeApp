@@ -25,15 +25,16 @@ function ProfileScreen() {
     const userData = userState.userData.user
     const dispatch = useDispatch();
     const featuredPhotos = userData.featuredPhotos
+    const userPost = userData.userPost
 
     let newImageUrlList = []
     featuredPhotos.filter((item => {
       newImageUrlList.push(item.url)
     }))
 
-    // useEffect(() => {
-    //     dispatch(PostActions.getPostRequest())
-    // }, [])
+    useEffect(() => {
+        dispatch(UserActions.getUserPostRequest())
+    }, [])
 
     if (fakeData) {
         const renderHeader = () => {
