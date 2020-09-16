@@ -1,5 +1,5 @@
 import apiSauce from 'apisauce';
-import ApiConfig from '../Configs/ApiConfig'
+import ApiConfig from '../Configs/ApiConfig';
 
 const create = (baseURL = ApiConfig.baseURL + '/auth') => {
   const api = apiSauce.create({
@@ -14,18 +14,18 @@ const create = (baseURL = ApiConfig.baseURL + '/auth') => {
   function loginEmail(email, password) {
     return api.post('/login', {
       email,
-      password
+      password,
     });
   }
 
   function logout(token) {
-    api.setHeaders({ Authorization: `Bearer ${token}` })
+    api.setHeaders({Authorization: `Bearer ${token}`});
     return api.post('/logout');
   }
 
   return {
     loginEmail,
-    logout
+    logout,
   };
 };
 

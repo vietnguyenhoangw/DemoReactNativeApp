@@ -15,15 +15,14 @@ export default Creators;
 export const INITIAL_STATE = Immutable({
   isAllowLocation: false,
 
-  location: {}
+  location: {},
 });
 
 /* ------------- Reducers ------------- */
 export const setAllowLocation = (state, {isAllowLocation}) =>
   state.merge({isAllowLocation});
 
-export const setLocation = (state, {location}) =>
-  state.merge({location});
+export const setLocation = (state, {location}) => state.merge({location});
 
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {

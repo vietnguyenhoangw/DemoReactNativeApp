@@ -1,6 +1,6 @@
 import {createActions, createReducer} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-import { pathOr } from 'ramda'
+import {pathOr} from 'ramda';
 
 /* ------------- Types and Action Creators ------------- */
 const {Types, Creators} = createActions({
@@ -32,33 +32,32 @@ export const INITIAL_STATE = Immutable({
 
   errorCheckAuthToken: null,
   fetchingCheckAuthToken: false,
-  isAuthenticated: false
+  isAuthenticated: false,
 });
 
 /* ------------- Reducers ------------- */
 export const loginEmailRequest = (state) => {
-  return state.merge({ fetchingLoginEmail: true, errorLoginEmail: null });
+  return state.merge({fetchingLoginEmail: true, errorLoginEmail: null});
 };
-export const loginEmailSuccess = (state, { userData }) =>
-  state.merge({ fetchingLoginEmail: false, userData });
-export const loginEmailFailure = (state, { errorLoginEmail }) =>
-  state.merge({ fetchingLoginEmail: false, errorLoginEmail });
+export const loginEmailSuccess = (state, {userData}) =>
+  state.merge({fetchingLoginEmail: false, userData});
+export const loginEmailFailure = (state, {errorLoginEmail}) =>
+  state.merge({fetchingLoginEmail: false, errorLoginEmail});
 
 export const logoutRequest = (state) => {
-  return state.merge({ fetchingLogout: true, errorLogout: null });
+  return state.merge({fetchingLogout: true, errorLogout: null});
 };
-export const logoutSuccess = (state) =>
-  state.merge({ fetchingLogout: false });
-export const logoutFailure = (state, { errorLogout }) =>
-  state.merge({ fetchingLogout: false, errorLogout });
+export const logoutSuccess = (state) => state.merge({fetchingLogout: false});
+export const logoutFailure = (state, {errorLogout}) =>
+  state.merge({fetchingLogout: false, errorLogout});
 
 export const checkAuthTokenRequest = (state) => {
-  return state.merge({ fetchingCheckAuthToken: true, errorCheckAuthToken: null });
+  return state.merge({fetchingCheckAuthToken: true, errorCheckAuthToken: null});
 };
-export const checkAuthTokenSuccess = (state, { userData }) =>
-  state.merge({ fetchingCheckAuthToken: false, isAuthenticated: true, userData });
-export const checkAuthTokenFailure = (state, { errorCheckAuthToken }) =>
-  state.merge({ fetchingCheckAuthToken: false, errorCheckAuthToken });
+export const checkAuthTokenSuccess = (state, {userData}) =>
+  state.merge({fetchingCheckAuthToken: false, isAuthenticated: true, userData});
+export const checkAuthTokenFailure = (state, {errorCheckAuthToken}) =>
+  state.merge({fetchingCheckAuthToken: false, errorCheckAuthToken});
 
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
@@ -72,9 +71,9 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.CHECK_AUTH_TOKEN_REQUEST]: checkAuthTokenRequest,
   [Types.CHECK_AUTH_TOKEN_SUCCESS]: checkAuthTokenSuccess,
-  [Types.CHECK_AUTH_TOKEN_FAILURE]: checkAuthTokenFailure
+  [Types.CHECK_AUTH_TOKEN_FAILURE]: checkAuthTokenFailure,
 });
 
 /* ------------- Selectors ------------- */
 export const getUserToken = (state) =>
-  pathOr(null, ['userData', 'token'], state)
+  pathOr(null, ['userData', 'token'], state);

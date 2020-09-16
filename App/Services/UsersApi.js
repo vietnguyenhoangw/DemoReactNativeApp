@@ -1,5 +1,5 @@
 import apiSauce from 'apisauce';
-import ApiConfig from '../Configs/ApiConfig'
+import ApiConfig from '../Configs/ApiConfig';
 
 const create = (baseURL = ApiConfig.baseURL + '/users') => {
   const api = apiSauce.create({
@@ -12,24 +12,24 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
   });
 
   function getMeApi(token) {
-    api.setHeaders({ Authorization: `Bearer ${token}` })
-    return api.get('/me')
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get('/me');
   }
 
   function getFeaturedPhotos(token, userId) {
-    api.setHeaders({ Authorization: `Bearer ${token}` })
-    return api.get(`${userId}/featured-photos`)
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get(`${userId}/featured-photos`);
   }
 
   function getUserPost(token) {
-    api.setHeaders({ Authorization: `Bearer ${token}` })
-    return api.get('me/polytags')
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get('me/polytags');
   }
 
   return {
     getMeApi,
     getFeaturedPhotos,
-    getUserPost
+    getUserPost,
   };
 };
 
