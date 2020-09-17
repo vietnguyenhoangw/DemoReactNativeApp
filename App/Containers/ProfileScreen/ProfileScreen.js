@@ -20,11 +20,12 @@ import {DRSMultiplePhoto, DRSFlatlist, DRSImage} from '../../Components';
 import {fakeData} from '../../Configs/fakeData';
 
 function ProfileScreen() {
-  const userState = useSelector((state) => state.auth);
-  const userData = userState.userData.user;
+  const authState = useSelector((state) => state.auth);
+  const userState = useSelector((state) => state.user);
+  const userData = authState.userData.user;
   const dispatch = useDispatch();
   const featuredPhotos = userData.featuredPhotos;
-  const userPost = userData.userPost;
+  const userPost = userState.userPost.results;
 
   let newImageUrlList = [];
   featuredPhotos.filter((item) => {
@@ -35,47 +36,38 @@ function ProfileScreen() {
     dispatch(UserActions.getUserPostRequest());
   }, []);
 
-  if (fakeData) {
-    const renderHeader = () => {
-      return (
-        <View>
-          <DRSImage
-            imageStyles={styles.coverPhoto}
-            source={userData.coverUrl}
-          />
-          <DRSImage
-            imageStyles={styles.avatarPhoto}
-            source={userData.avatarUrl}
-          />
-          <View style={styles.nameContaint}>
-            <Text style={styles.nameText}>{userData.fullName}</Text>
-          </View>
-          <View style={styles.descriptions}>
-            <Text style={styles.descriptionsText}>
-              {userData.bio ? userData.bio : '. . .'}
-            </Text>
-          </View>
-          <DRSMultiplePhoto
-            containerStyle={styles.multiplePhotoContainer}
-            btnOnPressAble={false}
-            sourceImage1={newImageUrlList[0]}
-            sourceImage2={newImageUrlList[1]}
-            sourceImage3={newImageUrlList[2]}
-          />
-        </View>
-      );
-    };
-
+  const renderHeader = () => {
     return (
-      <View style={styles.viewOnScreen}>
-        <DRSFlatlist renderHeader={renderHeader} listData={fakeData} />
+      <View>
+        <DRSImage imageStyles={styles.coverPhoto} source={userData.coverUrl} />
+        <DRSImage
+          imageStyles={styles.avatarPhoto}
+          source={userData.avatarUrl}
+        />
+        <View style={styles.nameContaint}>
+          <Text style={styles.nameText}>{userData.fullName}</Text>
+        </View>
+        <View style={styles.descriptions}>
+          <Text style={styles.descriptionsText}>
+            {userData.bio ? userData.bio : '. . .'}
+          </Text>
+        </View>
+        <DRSMultiplePhoto
+          containerStyle={styles.multiplePhotoContainer}
+          btnOnPressAble={false}
+          sourceImage1={newImageUrlList[0]}
+          sourceImage2={newImageUrlList[1]}
+          sourceImage3={newImageUrlList[2]}
+        />
       </View>
     );
-  } else {
-    <View>
-      <Text>Error</Text>
-    </View>;
-  }
+  };
+
+  return (
+    <View style={styles.viewOnScreen}>
+      <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
+    </View>
+  );
 }
 
 export default ProfileScreen;

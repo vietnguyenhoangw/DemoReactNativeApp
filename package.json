@@ -21,7 +21,9 @@
     "react-native": "0.62.2",
     "react-native-easy-toast": "^1.2.0",
     "react-native-fast-image": "^8.1.5",
+    "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "^1.7.0",
+    "react-native-image-viewing": "^0.2.0",
     "react-native-permissions": "^2.2.0",
     "react-native-reanimated": "^1.10.1",
     "react-native-safe-area-context": "^3.1.1",
@@ -32,8 +34,7 @@
     "redux-persist": "6.0.0",
     "redux-saga": "1.0.5",
     "reduxsauce": "1.1.0",
-    "seamless-immutable": "7.1.4",
-    "react-native-geolocation-service": "^5.0.0"
+    "seamless-immutable": "7.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

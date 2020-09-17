@@ -37,8 +37,6 @@ const LocationScreen = () => {
         )
       ) {
         previousLocation.longitude = longitude;
-        console.log("handleLocation -> longitude", longitude)
-        console.log("handleLocation -> previousLocation.longitude", previousLocation.longitude)
         previousLocation.latitude = latitude;
         dispatch(AppActions.setLocation({latitude, longitude}));
       }
@@ -54,7 +52,6 @@ const LocationScreen = () => {
 
   useEffect(() => {
     checkPermissionLocation((result) => {
-      console.log('LocationScreen -> result', result);
       dispatch(AppActions.setAllowLocation(result));
     });
   }, []);
