@@ -31,7 +31,7 @@ export const INITIAL_STATE = Immutable({
   errorGetUserPost: null,
   fetchingGetUserPost: false,
 
-  listFriend: [],
+  userFriendList: [],
   fetchingGetListFriend: false,
   errorGetListFriend: null,
 });
@@ -59,8 +59,9 @@ export const getUserPostFailure = (state, {errorGetUserPost}) =>
 export const getListFriendRequest = (state) => {
   return state.merge({fetchingGetListFriend: true, errorGetListFriend: null});
 };
-export const getListFriendSuccess = (state, {listFriend}) =>
-  state.merge({fetchingGetListFriend: false, listFriend});
+export const getListFriendSuccess = (state, {userFriendList}) => {
+  return state.merge({fetchingGetListFriend: false, userFriendList});
+}
 export const getListFriendFailure = (state, {errorGetListFriend}) =>
   state.merge({fetchingGetListFriend: false, errorGetListFriend});
 

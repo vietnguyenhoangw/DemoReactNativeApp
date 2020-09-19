@@ -10,7 +10,7 @@ export default StyleSheet.create({
     profileContainer: {
         padding: 10,
         marginHorizontal: Metrics.doubleBaseMargin,
-        marginTop: Metrics.doubleBaseMargin * 2,
+        marginTop: Metrics.baseMargin,
         backgroundColor: Colors.greyLight,
         flexDirection: 'row'
     },
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         width: Metrics.quadrupleBaseMargin * 2,
         height: Metrics.quadrupleBaseMargin * 2,
         borderColor: Colors.nightRider,
-        borderWidth: 2
+        borderWidth: 1
     },
     nameText: {
         fontSize: Metrics.halfQuintupleBaseMargin,

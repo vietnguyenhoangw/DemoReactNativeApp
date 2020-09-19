@@ -6,6 +6,7 @@ import styles from './styles/ListFriendScreenStyles';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
+import UserActions from '../../Redux/UserRedux'
 
 // components
 import {DRSFriendCard, DRSPostCard} from '../../Components';
@@ -17,9 +18,12 @@ const fakeDataa = fakeData
 function ListFriendScreen() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
-  const userPost = userState.userPost.results;
-  const [data, setData] = useState(fakeData)
-  console.log("ListFriendScreen -> data", data)
+  const friendList = userState.userFriendList.results
+  console.log("ListFriendScreen -> friendList", friendList)
+
+  useEffect(() => {
+    dispatch(UserActions.getListFriendRequest())
+  },[])
 
   const renderItem = ({item}) => {
     return <DRSFriendCard item={item}/>;
@@ -27,10 +31,10 @@ function ListFriendScreen() {
 
   return (
     <View style={styles.viewOnScreen}>
-      {!fakeData ? (
+      {friendList ? (
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={userPost}
+          data={friendList}
           renderItem={renderItem}
           keyExtractor={(item) => item._id}
         />

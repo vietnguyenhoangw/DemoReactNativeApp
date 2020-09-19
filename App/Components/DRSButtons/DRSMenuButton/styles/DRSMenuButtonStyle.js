@@ -8,7 +8,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     zIndex: 10,
-    marginTop: 20,
+    marginTop: Metrics.baseMargin,
     marginHorizontal: Metrics.doubleBaseMargin,
     padding: Metrics.baseMargin,
     backgroundColor: Colors.greyLight

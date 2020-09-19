@@ -7,9 +7,30 @@ import {Metrics, Colors} from '../../../../Themes';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    margin: Metrics.doubleBaseMargin,
-    marginBottom: Metrics.baseMargin,
-    backgroundColor: 'red',
-    padding: 40
+    marginTop: Metrics.baseMargin,
+    marginHorizontal: Metrics.baseMargin,
+    backgroundColor: Colors.greyLight,
+    flexDirection: 'row',
+    width: Metrics.screenWidth - 20,
+    padding: Metrics.baseMargin
+  },
+  imageStyle: {
+    height: Metrics.tabBarHeight,
+    width: Metrics.tabBarHeight,
+  },
+  nameText:{
+    fontSize: Metrics.doubleBaseMargin,
+    fontWeight: 'bold'
+  },
+  textContainer: {
+    flex: 1,
+    marginHorizontal: Metrics.baseMargin,
+    justifyContent: 'center'
+  },
+  descriptionText: {
+
+  },
+  menuIcon: {
+    flex: 1
   }
 });

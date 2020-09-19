@@ -7,7 +7,7 @@ export default StyleSheet.create({
   viewOnScreen: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   permisionBtn: {
     padding: Metrics.doubleBaseMargin,

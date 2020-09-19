@@ -14,15 +14,21 @@ import {Metrics, Images} from '../../../Themes';
 import {useSelector, useDispatch} from 'react-redux';
 
 function DRSFriendCard({imageSource, item}) {
-  const {url, totalComments, totalLikes, createdAt} = item;
-  const {fullName, avatarUrl} = item.uploadedBy;
+  const {fullName, avatarUrl, job} = item;
 
   return (
-    <View>
-      <TouchableOpacity style={styles.container}>
-        <Text>Hello</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.container}>
+      <DRSImage
+        resizeMode={'cover'}
+        source={avatarUrl}
+        imageStyles={styles.imageStyle}
+      />
+      <View style={styles.textContainer}>
+        <Text style={styles.nameText}>{fullName}</Text>
+        <Text style={styles.descriptionText}>{job}</Text>
+      </View>
+      <DRSImageButton imagesStyle={styles.menuIcon} sourceImage={Images.subMenu}/>
+    </TouchableOpacity>
   );
 }
 
