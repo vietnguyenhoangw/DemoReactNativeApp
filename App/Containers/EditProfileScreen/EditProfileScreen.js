@@ -5,7 +5,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles/EditProfileScreenStyles';
 
 // components
-import {DRSMultiplePhoto, DRSImageButton} from '../../Components/index';
+import {RDSTextInputWithTitle} from '../../Components/index';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -22,16 +22,26 @@ function EditProfileScreen() {
 
   return (
     <View>
-      <DRSMultiplePhoto
-        containerStyle={styles.multiplePhotoContainer}
-        btnOnPressAble={false}
-        sourceImage1={newImageUrlList[0]}
-        sourceImage2={newImageUrlList[1]}
-        sourceImage3={newImageUrlList[2]}
+      <RDSTextInputWithTitle
+        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        miniTitle={'First Name'}
+        placeholder={'First Name'}
       />
-      <TouchableOpacity style={styles.btnFeaturedPhotos}>
-          <Text style={styles.textBtnFeaturedPhotos}>Change featured photos</Text>
-      </TouchableOpacity>
+      <RDSTextInputWithTitle
+        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        miniTitle={'Last Name'}
+        placeholder={'Last Name'}
+      />
+      <RDSTextInputWithTitle
+        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        miniTitle={'Descriptions'}
+        placeholder={'Descriptions'}
+      />
+      <RDSTextInputWithTitle
+        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        miniTitle={'Address'}
+        placeholder={'Address'}
+      />
     </View>
   );
 }

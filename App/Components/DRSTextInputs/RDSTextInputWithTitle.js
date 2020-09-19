@@ -1,9 +1,11 @@
 import {View, Text, TextInput} from 'react-native';
 import styles from './Styles/RDSTextInputWithTitleStyle';
 import React from 'react';
+import {Colors} from '../../Themes';
 
 function RDSTextInputWithTitle(
   {
+    miniTitle,
     textInputTitle,
     placeholder,
     secureTextEntry,
@@ -15,6 +17,25 @@ function RDSTextInputWithTitle(
   ref,
 ) {
   return (
+    <View>
+      {miniTitle && (
+        <View
+          style={{
+            backgroundColor: Colors.backgroundGray,
+            position: 'absolute',
+            marginHorizontal: 16,
+            zIndex: 1,
+            paddingHorizontal: 8,
+            marginTop: 2,
+          }}>
+          <Text
+            style={{
+              fontWeight: 'bold',
+            }}>
+            {miniTitle}
+          </Text>
+        </View>
+      )}
       <TextInput
         style={[styles.input, textInputTitle]}
         placeholder={placeholder}
@@ -25,6 +46,7 @@ function RDSTextInputWithTitle(
         onSubmitEditing={onSubmitEditing}
         ref={ref}
       />
+    </View>
   );
 }
 

@@ -43,7 +43,7 @@ export default StyleSheet.create({
     marginHorizontal: Metrics.doubleBaseMargin,
   },
   descriptionsText: {
-    textAlign: 'center',
+    marginVertical: 4
   },
   multiplePhotoContainer: {
     marginVertical: Metrics.baseMargin,

@@ -17,6 +17,7 @@ export default StyleSheet.create({
   imageStyle: {
     height: Metrics.tabBarHeight,
     width: Metrics.tabBarHeight,
+    borderWidth: 1
   },
   nameText:{
     fontSize: Metrics.doubleBaseMargin,

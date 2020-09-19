@@ -20,12 +20,10 @@ export default StyleSheet.create({
     padding: 15,
   },
   input: {
-    borderBottomColor: Colors.whisper,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     fontSize: 18,
     paddingBottom: 10,
     color: Colors.nightRider,
-    width: '100%',
     marginTop: 10
   }
 });

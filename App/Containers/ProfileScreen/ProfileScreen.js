@@ -25,6 +25,7 @@ function ProfileScreen() {
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
+  console.log('ProfileScreen -> userData', userData);
   const fetchingGetUserPost = userState.fetchingGetUserPost;
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
@@ -71,6 +72,12 @@ function ProfileScreen() {
           <Text style={styles.descriptionsText}>
             {userData.bio ? userData.bio : '. . .'}
           </Text>
+          <Text style={styles.descriptionsText}>
+            {userData.dob ? userData.dob : '. . .'}
+          </Text>
+          {userData.city && (
+            <Text style={styles.descriptionsText}>{userData.city}</Text>
+          )}
         </View>
         <DRSMultiplePhoto
           containerStyle={styles.multiplePhotoContainer}
