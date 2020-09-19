@@ -8,11 +8,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: Metrics.screenHeight * 0.15,
     width: Metrics.screenWidth,
-    backgroundColor: Colors.greyLight
+    backgroundColor: Colors.greyLight,
   },
   image: {
-    flex: 1,
     width: Metrics.screenWidth * 0.34 - 2,
+    height: Metrics.screenWidth * 0.34 - 2,
     resizeMode: 'cover',
     backgroundColor: Colors.greyLight,
     borderColor: Colors.veryLightGrey,

@@ -13,7 +13,7 @@ export default StyleSheet.create({
     coverPhoto: {
         height: Metrics.screenHeight / 3.5
     },
-    avatarPhoto: {
+    containerAvatarPhoto: {
         height: Metrics.quintupleBaseMargin * 2,
         width: Metrics.quintupleBaseMargin * 2,
         borderColor: Colors.black,
@@ -22,6 +22,9 @@ export default StyleSheet.create({
         top: Metrics.screenHeight / 4.8,
         left: Metrics.screenWidth / 2.8,
         zIndex: 1
+    },
+    avatarPhoto: {
+        height: Metrics.quintupleBaseMargin * 2,
     },
     nameContaint: {
        marginTop: Metrics.tripleBaseMargin,
@@ -44,6 +47,6 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     multiplePhotoContainer: {
-        marginTop: Metrics.doubleBaseMargin
+        marginVertical: Metrics.baseMargin
     }
 });

@@ -11,16 +11,20 @@ import {Images} from '../../Themes';
 // components
 import {DRSImage} from '../DRSImage';
 
-function DRSViewImage({imageSource}) {
+function DRSViewImage({
+  imageSource,
+  containerStyles,
+  imageStyles,
+  imageList,
+  imageIndex,
+}) {
   const [isViewImage, setIsViewImage] = useState(false);
 
   const images = [
     {
-      uri: imageSource
+      uri: imageSource,
     },
   ];
-
-  console.log(imageSource);
 
   const onPressViewImage = () => {
     setIsViewImage(true);
@@ -31,13 +35,19 @@ function DRSViewImage({imageSource}) {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPressViewImage}>
-        <DRSImage imageStyles={styles.post} source={imageSource} />
-      </TouchableOpacity>
+    <View style={containerStyles}>
+      {imageSource ? (
+        <TouchableOpacity onPress={onPressViewImage}>
+          <DRSImage imageStyles={imageStyles} source={imageSource} />
+        </TouchableOpacity>
+      ) : (
+        <View>
+          <DRSImage imageStyles={imageStyles} source={Images.defaultPhoto} />
+        </View>
+      )}
       <ImageView
-        images={images}
-        imageIndex={0}
+        images={imageList ? imageList : images}
+        imageIndex={imageIndex ? imageIndex : 0}
         visible={isViewImage}
         onRequestClose={onPressCloseImage}
         swipeToCloseEnabled={false}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text} from 'react-native';
+import ImageView from 'react-native-image-viewing';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -14,7 +15,12 @@ import styles from './Styles/ProfileScreenStyles';
 import {Images} from '../../Themes';
 
 //components
-import {DRSMultiplePhoto, DRSFlatlist, DRSImage} from '../../Components';
+import {
+  DRSMultiplePhoto,
+  DRSFlatlist,
+  DRSImage,
+  DRSViewImage,
+} from '../../Components';
 
 // fake-data
 import {fakeData} from '../../Configs/fakeData';
@@ -26,23 +32,35 @@ function ProfileScreen() {
   const dispatch = useDispatch();
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
+  const [isViewImage, setIsViewImage] = useState(false)
+  const [imageIndex, setImageIndex] = useState(0)
 
   let newImageUrlList = [];
   featuredPhotos.filter((item) => {
-    newImageUrlList.push(item.url);
+    newImageUrlList.push({uri: item.url});
   });
 
   useEffect(() => {
     dispatch(UserActions.getUserPostRequest());
   }, []);
 
+  const onPressViewImage = (index) => {
+    setImageIndex(index)
+    setIsViewImage(true)
+  }
+
+  const onPressCloseImage = () => {
+    setIsViewImage(false)
+  }
+
   const renderHeader = () => {
     return (
       <View>
         <DRSImage imageStyles={styles.coverPhoto} source={userData.coverUrl} />
-        <DRSImage
+        <DRSViewImage
+          imageSource={userData.avatarUrl}
+          containerStyles={styles.containerAvatarPhoto}
           imageStyles={styles.avatarPhoto}
-          source={userData.avatarUrl}
         />
         <View style={styles.nameContaint}>
           <Text style={styles.nameText}>{userData.fullName}</Text>
@@ -58,6 +76,8 @@ function ProfileScreen() {
           sourceImage1={newImageUrlList[0]}
           sourceImage2={newImageUrlList[1]}
           sourceImage3={newImageUrlList[2]}
+          viewType={true}
+          imageList={newImageUrlList}
         />
       </View>
     );

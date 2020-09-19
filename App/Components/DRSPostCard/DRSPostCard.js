@@ -22,18 +22,14 @@ function DRSPostCard({imageSource, item}) {
     <View>
       <TouchableOpacity style={styles.container}>
         <View style={styles.header}>
-          <DRSImage
-            resizeMode={'cover'}
-            imageStyles={styles.avatar}
-            source={avatarUrl}
-          />
+          <DRSViewImage imageSource={avatarUrl} imageStyles={styles.avatar}/>
           <View style={styles.nameContain}>
             <Text style={styles.userNameText}>{fullName}</Text>
             <Text style={styles.dateText}>{createdAt}</Text>
           </View>
           <DRSImageButton sourceImage={Images.subMenu} />
         </View>
-        <DRSViewImage imageSource={url} />
+        <DRSViewImage imageSource={url} imageStyles={styles.post} />
         <View style={styles.header}>
           <Text style={styles.dateText}>{totalLikes} likes |</Text>
           <Text style={styles.dateText}> {totalComments} comments</Text>
