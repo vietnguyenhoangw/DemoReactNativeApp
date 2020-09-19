@@ -1,18 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, Text} from 'react-native';
-import ImageView from 'react-native-image-viewing';
+import React, {useEffect} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
-import AuthActions from '../../Redux/AuthRedux';
 import UserActions from '../../Redux/UserRedux';
-// import PostActions from '../../Redux/PostRedux'
 
 // styles
 import styles from './Styles/ProfileScreenStyles';
-
-// theme
-import {Images} from '../../Themes';
 
 //components
 import {
@@ -23,12 +17,15 @@ import {
   DRSLoading,
 } from '../../Components';
 
+// theme
+import {Images} from '../../Themes';
+
 function ProfileScreen() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
-  const fetchingGetUserPost = userState.fetchingGetUserPost
+  const fetchingGetUserPost = userState.fetchingGetUserPost;
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
 
@@ -44,12 +41,29 @@ function ProfileScreen() {
   const renderHeader = () => {
     return (
       <View>
-        <DRSImage imageStyles={styles.coverPhoto} source={userData.coverUrl} />
-        <DRSViewImage
-          imageSource={userData.avatarUrl}
-          containerStyles={styles.containerAvatarPhoto}
-          imageStyles={styles.avatarPhoto}
-        />
+        <View>
+          <View style={styles.cameraCoverContainer}>
+            <TouchableOpacity>
+              <DRSImage
+                source={Images.camera}
+                imageStyles={styles.cameraIcon}
+              />
+            </TouchableOpacity>
+          </View>
+          <DRSImage
+            imageStyles={styles.coverPhoto}
+            source={userData.coverUrl}
+          />
+        </View>
+        <View style={styles.containerAvatarPhoto}>
+          <TouchableOpacity style={styles.cameraContainer}>
+            <DRSImage source={Images.camera} imageStyles={styles.cameraIcon} />
+          </TouchableOpacity>
+          <DRSViewImage
+            imageSource={userData.avatarUrl}
+            imageStyles={styles.avatarPhoto}
+          />
+        </View>
         <View style={styles.nameContaint}>
           <Text style={styles.nameText}>{userData.fullName}</Text>
         </View>
@@ -74,7 +88,6 @@ function ProfileScreen() {
   return (
     <View style={styles.viewOnScreen}>
       <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
-      {fetchingGetUserPost && <DRSLoading />}
     </View>
   );
 }

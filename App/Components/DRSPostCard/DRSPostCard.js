@@ -1,32 +1,33 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 // style
 import styles from './Styles/DRSPostCardStyle';
 
 // components
-import {DRSImage, DRSImageButton, DRSViewImage} from '../../Components';
+import {DRSImageButton, DRSViewImage} from '../../Components';
 
 // theme
-import {Metrics, Images} from '../../Themes';
-
-// redux
-import {useSelector, useDispatch} from 'react-redux';
+import {Images} from '../../Themes';
 
 function DRSPostCard({imageSource, item}) {
-  const {url, totalComments, totalLikes, createdAt} = item;
+  console.log('DRSPostCard -> item', item);
+  const {url, totalComments, totalLikes, createdAt, description} = item;
   const {fullName, avatarUrl} = item.uploadedBy;
 
   return (
     <View>
       <TouchableOpacity style={styles.container}>
         <View style={styles.header}>
-          <DRSViewImage imageSource={avatarUrl} imageStyles={styles.avatar}/>
+          <DRSViewImage imageSource={avatarUrl} imageStyles={styles.avatar} />
           <View style={styles.nameContain}>
             <Text style={styles.userNameText}>{fullName}</Text>
             <Text style={styles.dateText}>{createdAt}</Text>
           </View>
           <DRSImageButton sourceImage={Images.subMenu} />
+        </View>
+        <View style={styles.description}>
+          <Text>{description}</Text>
         </View>
         <DRSViewImage imageSource={url} imageStyles={styles.post} />
         <View style={styles.header}>

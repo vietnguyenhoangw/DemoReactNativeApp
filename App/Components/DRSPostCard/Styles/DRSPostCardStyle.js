@@ -48,5 +48,9 @@ export default StyleSheet.create({
     },
     btnBottom: {
         tintColor: Colors.black
+    },
+    description: {
+        marginHorizontal: Metrics.baseMargin,
+        marginBottom: Metrics.baseMargin
     }
 })
