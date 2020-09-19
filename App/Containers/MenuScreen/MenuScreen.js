@@ -28,7 +28,6 @@ function MenuScreen({navigation}) {
 
   useEffect(() => {
     if (isLogout && !fetchingLogout) {
-      console.log('errorLogout: ', errorLogout);
       if (!!errorLogout) {
         Alert.alert('Error');
         setIsLogout(false);

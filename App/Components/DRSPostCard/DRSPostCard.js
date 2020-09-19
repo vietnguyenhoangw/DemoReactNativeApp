@@ -16,7 +16,6 @@ import {useSelector, useDispatch} from 'react-redux';
 function DRSPostCard({imageSource, item}) {
   const {url, totalComments, totalLikes, createdAt} = item;
   const {fullName, avatarUrl} = item.uploadedBy;
-  console.log('DRSPostCard -> item', item);
 
   return (
     <View>
