@@ -15,6 +15,7 @@ const images = {
     tick: require('../Images/icons/tick.png'),
     share: require('../Images/icons/share.png'),
     edit: require('../Images/icons/edit.png'),
+    friends: require('../Images/icons/friends.png'),
 }
 
 export default images

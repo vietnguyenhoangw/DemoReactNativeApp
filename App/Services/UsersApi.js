@@ -26,10 +26,16 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return api.get('me/polytags');
   }
 
+  function getListFriend(token) {
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get('me/friends');
+  }
+
   return {
     getMeApi,
     getFeaturedPhotos,
     getUserPost,
+    getListFriend
   };
 };
 

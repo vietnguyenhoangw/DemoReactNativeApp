@@ -10,6 +10,10 @@ const {Types, Creators} = createActions({
   getUserPostRequest: [''],
   getUserPostSuccess: ['userPost'],
   getUserPostFailure: ['errorGetUserPost'],
+
+  getListFriendRequest: [''],
+  getListFriendSuccess: ['userFriendList'],
+  getListFriendFailure: ['errorGetFriendList'],
 });
 
 export const UserTypes = Types;
@@ -26,6 +30,10 @@ export const INITIAL_STATE = Immutable({
 
   errorGetUserPost: null,
   fetchingGetUserPost: false,
+
+  listFriend: [],
+  fetchingGetListFriend: false,
+  errorGetListFriend: null,
 });
 
 /* ------------- Reducers ------------- */
@@ -48,6 +56,14 @@ export const getUserPostSuccess = (state, {userPost}) =>
 export const getUserPostFailure = (state, {errorGetUserPost}) =>
   state.merge({fetchingGetUserPost: false, errorGetUserPost});
 
+export const getListFriendRequest = (state) => {
+  return state.merge({fetchingGetListFriend: true, errorGetListFriend: null});
+};
+export const getListFriendSuccess = (state, {listFriend}) =>
+  state.merge({fetchingGetListFriend: false, listFriend});
+export const getListFriendFailure = (state, {errorGetListFriend}) =>
+  state.merge({fetchingGetListFriend: false, errorGetListFriend});
+
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_FEATURED_PHOTOS_REQUEST]: getFeaturedPhotosRequest,
@@ -57,4 +73,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_USER_POST_REQUEST]: getUserPostRequest,
   [Types.GET_USER_POST_SUCCESS]: getUserPostSuccess,
   [Types.GET_USER_POST_FAILURE]: getUserPostFailure,
+
+  [Types.GET_LIST_FRIEND_REQUEST]: getListFriendRequest,
+  [Types.GET_LIST_FRIEND_SUCCESS]: getListFriendSuccess,
+  [Types.GET_LIST_FRIEND_FAILURE]: getListFriendFailure,
 });

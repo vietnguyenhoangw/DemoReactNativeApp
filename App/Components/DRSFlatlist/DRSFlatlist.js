@@ -4,7 +4,7 @@ import {View, Text, FlatList, RefreshControl} from 'react-native';
 // style
 import styles from './Styles/DRSFlatlistStyle';
 
-// // component
+// component
 import {DRSPostCard} from '../index';
 
 function DRSFlatlist({listData, renderHeader}) {

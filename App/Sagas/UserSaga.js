@@ -38,3 +38,18 @@ export function* getUserPost(api) {
     yield put(UserRedux.getUserPostFailure(error.message));
   }
 }
+
+export function* getListFriendSaga(api) {
+  /* Check authentication token */
+  const accessToken = yield select(selectUserToken);
+  const response = yield call(api.getListFriend, accessToken);
+  try {
+    if (response.ok && response.status === 200) {
+      yield put(UserRedux.getListFriendSucess(response.data));
+    } else {
+      yield put(UserRedux.getListFriendFailure(response));
+    }
+  } catch (error) {
+    yield put(UserRedux.getListFriendFailure(error.message));
+  }
+}

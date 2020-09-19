@@ -15,18 +15,9 @@ export default StyleSheet.create({
   tabButton: {
     width: 40,
     height: 40,
-    borderRadius: 40 / 2,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.white,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4
   },
   iconButton: {
     width: 20,

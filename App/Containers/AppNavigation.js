@@ -11,6 +11,7 @@ import {ProfileScreen} from './ProfileScreen/';
 import SplashScreen from './SplashScreen';
 import {EditProfileScreen} from './EditProfileScreen';
 import {LocationScreen} from './LocationScreen'
+import {ListFriendScreen} from './ListFriendScreen'
 
 // HomeTab
 import {DRSTabBar} from '../Components';
@@ -35,7 +36,8 @@ function HomeTabs() {
       backBehavior={'none'}
       tabBar={(props) => <DRSTabBar {...props} />}>
       <Tab.Screen name={'HomeScreen'} component={HomeScreen} />
-      <AppStack.Screen name={'MenuScreen'} component={MenuScreen} />
+      <Tab.Screen name={'ListFriendScreen'} component={ListFriendScreen} />
+      <Tab.Screen name={'MenuScreen'} component={MenuScreen} />
     </Tab.Navigator>
   );
 }

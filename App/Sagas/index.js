@@ -13,7 +13,7 @@ import {UserTypes} from '../Redux/UserRedux';
 // saga
 import {Login, Logout, checkAuthTokenSaga} from './AuthSaga';
 import {startup} from './StartupSaga';
-import {getFeaturedPhotos, getUserPost} from './UserSaga';
+import {getFeaturedPhotos, getUserPost, getListFriendSaga} from './UserSaga';
 // import { getPost } from './PostSaga'
 
 // api
@@ -44,6 +44,9 @@ export default function* rootSaga() {
   ]);
   yield all([
     takeLatest(UserTypes.GET_USER_POST_REQUEST, getUserPost, usersApi),
+  ]);
+  yield all([
+    takeLatest(UserTypes.GET_LIST_FRIEND_REQUEST, getListFriendSaga, usersApi),
   ]);
 
   // post
