@@ -20,20 +20,17 @@ import {
   DRSFlatlist,
   DRSImage,
   DRSViewImage,
+  DRSLoading,
 } from '../../Components';
 
-// fake-data
-import {fakeData} from '../../Configs/fakeData';
-
 function ProfileScreen() {
+  const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
-  const dispatch = useDispatch();
+  const fetchingGetUserPost = userState.fetchingGetUserPost
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
-  const [isViewImage, setIsViewImage] = useState(false)
-  const [imageIndex, setImageIndex] = useState(0)
 
   let newImageUrlList = [];
   featuredPhotos.filter((item) => {
@@ -43,15 +40,6 @@ function ProfileScreen() {
   useEffect(() => {
     dispatch(UserActions.getUserPostRequest());
   }, []);
-
-  const onPressViewImage = (index) => {
-    setImageIndex(index)
-    setIsViewImage(true)
-  }
-
-  const onPressCloseImage = () => {
-    setIsViewImage(false)
-  }
 
   const renderHeader = () => {
     return (
@@ -86,6 +74,7 @@ function ProfileScreen() {
   return (
     <View style={styles.viewOnScreen}>
       <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
+      {fetchingGetUserPost && <DRSLoading />}
     </View>
   );
 }

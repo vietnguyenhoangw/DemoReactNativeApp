@@ -4,5 +4,6 @@ export default Colors = {
     white: '#FFFFFF',
     black: '#000000',
     transparent: 'transparent',
-    greyLight: '#e3e3e3'
+    greyLight: '#e3e3e3',
+    backgroundGray: '#F2F2F2',
 }

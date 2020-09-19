@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 // theme
-import { Metrics } from '../../../Themes/index'
+import { Metrics, Colors } from '../../../Themes/index'
 
 export default StyleSheet.create({
   container: {
@@ -11,16 +11,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
-    backgroundColor: Colors.transparent
+    backgroundColor: Colors.backgroundGray,
   },
   loadingWrapper: {
+    backgroundColor: Colors.transparent,
     position: 'absolute',
     zIndex: 1000,
-    backgroundColor: Colors.blackOpacity,
     width: 80,
     height: 80,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 });

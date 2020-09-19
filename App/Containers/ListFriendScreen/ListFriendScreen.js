@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, Alert, ScrollView, FlatList} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, FlatList, Alert} from 'react-native';
 
 // styles
 import styles from './styles/ListFriendScreenStyles';
@@ -9,21 +9,32 @@ import {useSelector, useDispatch} from 'react-redux';
 import UserActions from '../../Redux/UserRedux'
 
 // components
-import {DRSFriendCard, DRSPostCard} from '../../Components';
+import {DRSFriendCard, DRSLoading} from '../../Components';
 
-// fake data
-import fakeData from '../../Configs/fakeData';
+// function
+import {usePrevious} from '../../Functions/AppFunction';
 
-const fakeDataa = fakeData
 function ListFriendScreen() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const friendList = userState.userFriendList.results
-  console.log("ListFriendScreen -> friendList", friendList)
+  const fetchingGetListFriend = userState.fetchingGetListFriend
+  const errorGetListFriend = userState.errorGetListFriend
+  const prevFetchingGetListFriend = usePrevious(fetchingGetListFriend)
 
   useEffect(() => {
     dispatch(UserActions.getListFriendRequest())
   },[])
+
+  useEffect(() => {
+    if (prevFetchingGetListFriend && fetchingGetListFriend) {
+      if(!errorGetListFriend) {
+        return
+      } else {
+        Alert.alert('Message', errorGetListFriend)
+      }
+    }
+  },[fetchingGetListFriend])
 
   const renderItem = ({item}) => {
     return <DRSFriendCard item={item}/>;
@@ -43,6 +54,7 @@ function ListFriendScreen() {
           <Text style={styles.emptyText}>User don't have any friend</Text>
         </View>
       )}
+      {fetchingGetListFriend && <DRSLoading />}
     </View>
   );
 }
