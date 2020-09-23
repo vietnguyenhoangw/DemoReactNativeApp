@@ -11,7 +11,6 @@ import {DRSImageButton, DRSViewImage} from '../../Components';
 import {Images} from '../../Themes';
 
 function DRSPostCard({imageSource, item}) {
-  console.log('DRSPostCard -> item', item);
   const {url, totalComments, totalLikes, createdAt, description} = item;
   const {fullName, avatarUrl} = item.uploadedBy;
 

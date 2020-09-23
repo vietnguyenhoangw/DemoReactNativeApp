@@ -48,13 +48,13 @@ export default StyleSheet.create({
     marginVertical: Metrics.baseMargin,
   },
   cameraContainer: {
-    position: 'absolute',
     zIndex: 25,
     bottom: -10,
-    right: -25,
+    right: 0,
     padding: 5,
     borderWidth: 1,
     backgroundColor: Colors.backgroundGray,
+    position: 'absolute'
   },
   cameraIcon: {
     width: 20,

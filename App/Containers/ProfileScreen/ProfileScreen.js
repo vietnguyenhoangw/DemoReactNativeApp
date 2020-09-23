@@ -22,13 +22,13 @@ import {Images} from '../../Themes';
 
 // function
 import {imagePicker} from '../../Functions/ImageFunction';
+import {checkPhotoLibraryPermission, checkCameraPermission} from '../../Functions/PermissionFunction'
 
 function ProfileScreen() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
-  console.log('ProfileScreen -> userData', userData);
   const fetchingGetUserPost = userState.fetchingGetUserPost;
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
@@ -43,11 +43,21 @@ function ProfileScreen() {
   }, []);
 
   const onPressChangeCoverPhoto = () => {
-    imagePicker()
+    checkPhotoLibraryPermission(async () => {
+      checkCameraPermission( async => {
+        imagePicker()
+      })
+    })
   };
 
   const onPressChangeAvatarPhoto = () => {
-    console.log('avatar');
+    checkPhotoLibraryPermission(async () => {
+      checkPhotoLibraryPermission(async () => {
+        checkCameraPermission( async => {
+          imagePicker()
+        })
+      })
+    })
   };
 
   const renderHeader = () => {
@@ -68,15 +78,15 @@ function ProfileScreen() {
           />
         </View>
         <View style={styles.containerAvatarPhoto}>
+          <DRSViewImage
+            imageSource={userData.avatarUrl}
+            imageStyles={styles.avatarPhoto}
+          />
           <TouchableOpacity
             style={styles.cameraContainer}
             onPress={onPressChangeAvatarPhoto}>
             <DRSImage source={Images.camera} imageStyles={styles.cameraIcon} />
           </TouchableOpacity>
-          <DRSViewImage
-            imageSource={userData.avatarUrl}
-            imageStyles={styles.avatarPhoto}
-          />
         </View>
         <View style={styles.nameContaint}>
           <Text style={styles.nameText}>{userData.fullName}</Text>
