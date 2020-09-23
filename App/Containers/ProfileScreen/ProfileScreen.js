@@ -20,6 +20,9 @@ import {
 // theme
 import {Images} from '../../Themes';
 
+// function
+import {imagePicker} from '../../Functions/ImageFunction';
+
 function ProfileScreen() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
@@ -39,12 +42,20 @@ function ProfileScreen() {
     dispatch(UserActions.getUserPostRequest());
   }, []);
 
+  const onPressChangeCoverPhoto = () => {
+    imagePicker()
+  };
+
+  const onPressChangeAvatarPhoto = () => {
+    console.log('avatar');
+  };
+
   const renderHeader = () => {
     return (
       <View>
         <View>
           <View style={styles.cameraCoverContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPressChangeCoverPhoto}>
               <DRSImage
                 source={Images.camera}
                 imageStyles={styles.cameraIcon}
@@ -57,7 +68,9 @@ function ProfileScreen() {
           />
         </View>
         <View style={styles.containerAvatarPhoto}>
-          <TouchableOpacity style={styles.cameraContainer}>
+          <TouchableOpacity
+            style={styles.cameraContainer}
+            onPress={onPressChangeAvatarPhoto}>
             <DRSImage source={Images.camera} imageStyles={styles.cameraIcon} />
           </TouchableOpacity>
           <DRSViewImage

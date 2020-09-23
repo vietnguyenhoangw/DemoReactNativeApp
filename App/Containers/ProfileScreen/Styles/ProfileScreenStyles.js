@@ -20,7 +20,6 @@ export default StyleSheet.create({
     position: 'absolute',
     top: Metrics.screenHeight / 4.8,
     left: Metrics.screenWidth / 2.8,
-    zIndex: 1,
   },
   avatarPhoto: {
     height: Metrics.quintupleBaseMargin * 2,
