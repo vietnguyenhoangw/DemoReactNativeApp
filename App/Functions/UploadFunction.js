@@ -13,6 +13,7 @@ export function newUploadFile(
   error,
 ) {
   let newPath = Platform.OS === 'android' ? path.replace('file://', '') : path
+  console.log("newPath", newPath)
   const optionsDefault = {
     path: newPath,
     url: ApiConfig.baseURL + url,

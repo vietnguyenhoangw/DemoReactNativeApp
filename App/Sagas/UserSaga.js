@@ -1,5 +1,5 @@
 import {call, put, select, take} from 'redux-saga/effects';
-import { buffers, eventChannel } from 'redux-saga'
+import { buffers, eventChannel, channel } from 'redux-saga'
 
 // redux
 import AuthRedux from '../Redux/AuthRedux'
@@ -73,14 +73,15 @@ export function* uploadAvatarSaga(api, action) {
 }
 
 export function * uploadImageAvatarSaga (accessToken, avatarInfo, api) {
-  const { path } = avatarInfo.source
+  const path = avatarInfo
+  console.log("function*uploadImageAvatarSaga -> path", path)
   try {
     if (path) {
       const channel = yield call(uploadImageAvatar, accessToken, path, api)
       while (true) {
         const { progress = 0, error, success } = yield take(channel)
         if (error) {
-          yield put(UserActions.setAvatarFailure(error))
+          yield put(UserRedux.setAvatarFailure(error))
           break
         }
         if (success) {

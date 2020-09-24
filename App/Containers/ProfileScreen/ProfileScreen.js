@@ -50,7 +50,7 @@ function ProfileScreen() {
       checkCameraPermission(async () => {
         imagePicker((imageResource) => {
           try {
-            const source = imageResource;
+            const source = imageResource.path;
             if (source) {
               dispatch(UserActions.setAvatarSuccess(source));
             }
@@ -67,7 +67,7 @@ function ProfileScreen() {
       checkCameraPermission(async () => {
         imagePicker((imageResource) => {
           try {
-            const source = imageResource;
+            const source = imageResource.path
             if (source) {
               dispatch(UserActions.setAvatarRequest(source));
             }

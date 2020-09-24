@@ -23,7 +23,7 @@ export const imagePicker = (callBack) => {
       console.log('User tapped custom button: ', response.customButton);
     } else {
       const source = {uri: response.uri};
-      callBack(source)
+      callBack(response)
       // You can also display the image using data:
       // const source = { uri: 'data:image/jpeg;base64,' + response.data };
     }
