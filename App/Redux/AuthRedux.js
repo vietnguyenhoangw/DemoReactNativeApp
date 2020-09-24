@@ -15,6 +15,9 @@ const {Types, Creators} = createActions({
   checkAuthTokenRequest: [''],
   checkAuthTokenSuccess: ['userData'],
   checkAuthTokenFailure: ['errorCheckAuthToken'],
+
+  changeMyAvatar: ['avatarUrl'],
+  changeMyCover: ['coverUrl'],
 });
 
 export const AuthTypes = Types;
@@ -59,6 +62,23 @@ export const checkAuthTokenSuccess = (state, {userData}) =>
 export const checkAuthTokenFailure = (state, {errorCheckAuthToken}) =>
   state.merge({fetchingCheckAuthToken: false, errorCheckAuthToken});
 
+export const changeMyAvatar = (state, {avatarUrl}) => {
+  const updatedUserData = Object.assign({}, state.userData, {
+    user: {...state.userData.user, avatarUrl},
+  });
+  return state.merge({
+    userData: updatedUserData,
+  });
+};
+export const changeMyCover = (state, {coverUrl}) => {
+  const updatedUserData = Object.assign({}, state.userData, {
+    user: {...state.userData.user, coverUrl},
+  });
+  return state.merge({
+    userData: updatedUserData,
+  });
+};
+
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_EMAIL_REQUEST]: loginEmailRequest,
@@ -72,6 +92,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.CHECK_AUTH_TOKEN_REQUEST]: checkAuthTokenRequest,
   [Types.CHECK_AUTH_TOKEN_SUCCESS]: checkAuthTokenSuccess,
   [Types.CHECK_AUTH_TOKEN_FAILURE]: checkAuthTokenFailure,
+
+  [Types.CHANGE_MY_AVATAR]: changeMyAvatar,
+  [Types.CHANGE_MY_COVER]: changeMyCover,
 });
 
 /* ------------- Selectors ------------- */

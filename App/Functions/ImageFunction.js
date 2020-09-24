@@ -1,6 +1,6 @@
 import ImagePicker from 'react-native-image-picker';
 
-export const imagePicker = () => {
+export const imagePicker = (callBack) => {
   // More info on all the options is below in the API Reference... just some common use cases shown here
   const options = {
     title: 'Select Avatar',
@@ -15,8 +15,6 @@ export const imagePicker = () => {
    * The second arg is the callback which sends object: response (more info in the API Reference)
    */
   ImagePicker.showImagePicker(options, (response) => {
-    console.log('Response = ', response);
-
     if (response.didCancel) {
       console.log('User cancelled image picker');
     } else if (response.error) {
@@ -25,13 +23,9 @@ export const imagePicker = () => {
       console.log('User tapped custom button: ', response.customButton);
     } else {
       const source = {uri: response.uri};
-
+      callBack(source)
       // You can also display the image using data:
       // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-
-      this.setState({
-        avatarSource: source,
-      });
     }
   });
 };

@@ -1,5 +1,6 @@
 import apiSauce from 'apisauce';
 import ApiConfig from '../Configs/ApiConfig';
+import { newUploadFile } from '../Functions/UploadFunction'
 
 const create = (baseURL = ApiConfig.baseURL + '/users') => {
   const api = apiSauce.create({
@@ -31,11 +32,17 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return api.get('me/friends');
   }
 
+  function setAvatarApi(token, data, process, response, error) {
+    const path = data.replace('file://', '')
+    return newUploadFile('users/avatar', path, token, process, response, error)
+  }
+
   return {
     getMeApi,
     getFeaturedPhotos,
     getUserPost,
-    getListFriend
+    getListFriend,
+    setAvatarApi
   };
 };
 

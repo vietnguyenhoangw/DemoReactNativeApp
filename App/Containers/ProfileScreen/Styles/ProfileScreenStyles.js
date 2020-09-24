@@ -45,7 +45,8 @@ export default StyleSheet.create({
     marginVertical: 4
   },
   multiplePhotoContainer: {
-    marginVertical: Metrics.baseMargin,
+    marginTop: Metrics.baseMargin,
+    marginBottom: Metrics.baseMargin * 2,
   },
   cameraContainer: {
     zIndex: 25,

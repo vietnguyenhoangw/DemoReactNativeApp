@@ -14,6 +14,16 @@ const {Types, Creators} = createActions({
   getListFriendRequest: [''],
   getListFriendSuccess: ['userFriendList'],
   getListFriendFailure: ['errorGetFriendList'],
+
+  setAvatarRequest: ['avatarInfo'],
+  setAvatarSuccess: [],
+  setAvatarFailure: ['errorSetAvatar'],
+
+  setCoverRequest: ['coverInfo'],
+  setCoverSuccess: [],
+  setCoverFailure: ['errorSetCover'],
+  
+  uploadProgress: ['progressUpload'],
 });
 
 export const UserTypes = Types;
@@ -34,6 +44,11 @@ export const INITIAL_STATE = Immutable({
   userFriendList: [],
   fetchingGetListFriend: false,
   errorGetListFriend: null,
+
+  fetchingSetAvatar: false,
+  errorSetAvatar: null,
+
+  progressUpload: 0
 });
 
 /* ------------- Reducers ------------- */
@@ -61,9 +76,28 @@ export const getListFriendRequest = (state) => {
 };
 export const getListFriendSuccess = (state, {userFriendList}) => {
   return state.merge({fetchingGetListFriend: false, userFriendList});
-}
+};
 export const getListFriendFailure = (state, {errorGetListFriend}) =>
   state.merge({fetchingGetListFriend: false, errorGetListFriend});
+
+export const setAvatarRequest = (state) =>
+  state.merge({fetchingSetAvatar: true, errorSetAvatar: null});
+export const setAvatarSuccess = (state) =>
+  state.merge({
+    fetchingSetAvatar: false,
+  });
+export const setAvatarFailure = (
+  state,
+  {errorSetAvatar},
+) => state.merge({fetchingSetAvatar: false, errorSetAvatar});
+
+export const uploadProgress = (
+  state,
+  { progressUpload }
+) => {
+  const newProgressUpload = progressUpload / 100
+  return state.merge({ progressUpload: newProgressUpload })
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
@@ -78,4 +112,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_LIST_FRIEND_REQUEST]: getListFriendRequest,
   [Types.GET_LIST_FRIEND_SUCCESS]: getListFriendSuccess,
   [Types.GET_LIST_FRIEND_FAILURE]: getListFriendFailure,
+
+  [Types.SET_AVATAR_REQUEST]: setAvatarRequest,
+  [Types.SET_AVATAR_SUCCESS]: setAvatarSuccess,
+  [Types.SET_AVATAR_FAILURE]: setAvatarFailure,
+  
+  [Types.UPLOAD_PROGRESS]: uploadProgress,
 });

@@ -4,6 +4,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 import UserActions from '../../Redux/UserRedux';
+import AuthActions from '../../Redux/AuthRedux';
 
 // styles
 import styles from './Styles/ProfileScreenStyles';
@@ -13,8 +14,7 @@ import {
   DRSMultiplePhoto,
   DRSFlatlist,
   DRSImage,
-  DRSViewImage,
-  DRSLoading,
+  DRSViewImage
 } from '../../Components';
 
 // theme
@@ -22,7 +22,10 @@ import {Images} from '../../Themes';
 
 // function
 import {imagePicker} from '../../Functions/ImageFunction';
-import {checkPhotoLibraryPermission, checkCameraPermission} from '../../Functions/PermissionFunction'
+import {
+  checkPhotoLibraryPermission,
+  checkCameraPermission,
+} from '../../Functions/PermissionFunction';
 
 function ProfileScreen() {
   const dispatch = useDispatch();
@@ -44,20 +47,36 @@ function ProfileScreen() {
 
   const onPressChangeCoverPhoto = () => {
     checkPhotoLibraryPermission(async () => {
-      checkCameraPermission( async => {
-        imagePicker()
-      })
-    })
+      checkCameraPermission(async () => {
+        imagePicker((imageResource) => {
+          try {
+            const source = imageResource;
+            if (source) {
+              dispatch(UserActions.setAvatarSuccess(source));
+            }
+          } catch (error) {
+            console.log('Error in imagePicker: ', error);
+          }
+        });
+      });
+    });
   };
 
   const onPressChangeAvatarPhoto = () => {
     checkPhotoLibraryPermission(async () => {
-      checkPhotoLibraryPermission(async () => {
-        checkCameraPermission( async => {
-          imagePicker()
-        })
-      })
-    })
+      checkCameraPermission(async () => {
+        imagePicker((imageResource) => {
+          try {
+            const source = imageResource;
+            if (source) {
+              dispatch(UserActions.setAvatarRequest(source));
+            }
+          } catch (error) {
+            console.log('Error in imagePicker: ', error);
+          }
+        });
+      });
+    });
   };
 
   const renderHeader = () => {
