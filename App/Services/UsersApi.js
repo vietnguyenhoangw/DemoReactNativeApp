@@ -34,7 +34,7 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
 
   function setAvatarApi(token, data, process, response, error) {
     const path = data.replace('file://', '')
-    return newUploadFile('users/avatar', path, token, process, response, error)
+    return newUploadFile('/users/avatar', path, token, process, response, error)
   }
 
   return {

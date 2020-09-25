@@ -47,6 +47,7 @@ export const INITIAL_STATE = Immutable({
 
   fetchingSetAvatar: false,
   errorSetAvatar: null,
+  showUploadAvatarProcessBar: false,
 
   progressUpload: 0
 });

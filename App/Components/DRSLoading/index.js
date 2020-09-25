@@ -1,3 +1,4 @@
 import DRSLoading from './DRSLoading'
+import DRSLoadingBar from './DRSLoadingBar/DRSLoadingBar'
 
-export { DRSLoading }
+export { DRSLoading, DRSLoadingBar }

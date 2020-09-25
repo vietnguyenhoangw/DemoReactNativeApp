@@ -14,7 +14,8 @@ import {
   DRSMultiplePhoto,
   DRSFlatlist,
   DRSImage,
-  DRSViewImage
+  DRSViewImage,
+  DRSLoadingBar,
 } from '../../Components';
 
 // theme
@@ -33,6 +34,8 @@ function ProfileScreen() {
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
   const fetchingGetUserPost = userState.fetchingGetUserPost;
+  const fetchingSetAvatar = userState.fetchingSetAvatar;
+  const progressUpload = userState.progressUpload;
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
 
@@ -46,20 +49,20 @@ function ProfileScreen() {
   }, []);
 
   const onPressChangeCoverPhoto = () => {
-    checkPhotoLibraryPermission(async () => {
-      checkCameraPermission(async () => {
-        imagePicker((imageResource) => {
-          try {
-            const source = imageResource.path;
-            if (source) {
-              dispatch(UserActions.setAvatarSuccess(source));
-            }
-          } catch (error) {
-            console.log('Error in imagePicker: ', error);
-          }
-        });
-      });
-    });
+    // checkPhotoLibraryPermission(async () => {
+    //   checkCameraPermission(async () => {
+    //     imagePicker((imageResource) => {
+    //       try {
+    //         const source = imageResource;
+    //         if (source) {
+    //           // dispatch(UserActions.setAvatarRequest(source));
+    //         }
+    //       } catch (error) {
+    //         console.log('Error in imagePicker: ', error);
+    //       }
+    //     });
+    //   });
+    // });
   };
 
   const onPressChangeAvatarPhoto = () => {
@@ -67,7 +70,7 @@ function ProfileScreen() {
       checkCameraPermission(async () => {
         imagePicker((imageResource) => {
           try {
-            const source = imageResource.path
+            const source = imageResource;
             if (source) {
               dispatch(UserActions.setAvatarRequest(source));
             }
@@ -121,6 +124,7 @@ function ProfileScreen() {
             <Text style={styles.descriptionsText}>{userData.city}</Text>
           )}
         </View>
+        {fetchingSetAvatar && <DRSLoadingBar processValue={progressUpload} />}
         <DRSMultiplePhoto
           containerStyle={styles.multiplePhotoContainer}
           btnOnPressAble={false}
