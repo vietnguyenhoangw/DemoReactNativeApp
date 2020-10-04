@@ -1,12 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, Alert, ScrollView} from 'react-native';
 
+// component
+import {DRSFlatlist} from '../../Components';
+
 // styles
 import styles from './Styles/HomeScreenStyles';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
-import AppActions from '../../Redux/AppRedux';
+import PostAction from '../../Redux/PostRedux';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 // function
@@ -15,7 +18,10 @@ import {openAppSettings} from '../../Functions/PermissionFunction';
 function HomeScreen() {
   const dispatch = useDispatch();
   const appState = useSelector((state) => state.app);
+  const postState = useSelector((state) => state.post);
   const isAllowLocation = appState.isAllowLocation;
+  const location = appState.location;
+  const post = postState.otherPost.results;
 
   const isNotAllowLocation = () => {
     const permisionText =
@@ -27,9 +33,19 @@ function HomeScreen() {
     );
   };
 
+  useEffect(() => {
+    if (location) {
+      dispatch(PostAction.getPostRequest(location));
+    }
+  }, []);
+
   return (
     <View style={styles.viewOnScreen}>
-      {!isAllowLocation ? isNotAllowLocation() : null}
+      {!isAllowLocation ? (
+        isNotAllowLocation()
+      ) : (
+        <DRSFlatlist listData={post} />
+      )}
     </View>
   );
 }

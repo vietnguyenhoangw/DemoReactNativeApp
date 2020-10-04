@@ -33,8 +33,8 @@ function DRSFlatlist({listData, renderHeader}) {
         </View>
       ) : (
         <View>
-          {renderHeader()}
-          <Text style={styles.emptyText}>User don't have any post</Text>
+          {renderHeader &&renderHeader()}
+          <Text style={styles.emptyText}>Don't have any post</Text>
         </View>
       )}
     </View>

@@ -6,8 +6,10 @@ import { Metrics } from '../../../Themes'
 export default StyleSheet.create({
   viewOnScreen: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+  listContainer: {
+    backgroundColor: Colors.white,
   },
   permisionBtn: {
     padding: Metrics.doubleBaseMargin,

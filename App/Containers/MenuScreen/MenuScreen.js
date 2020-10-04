@@ -96,7 +96,10 @@ function MenuScreen({navigation}) {
           imageSource={Images.message}
           onPress={checkPermissionLocation}
         />
-        <DRSMenuButton title={'Blocked people'} imageSource={Images.block} />
+        <DRSMenuButton
+          title={'Blocked people'}
+          imageSource={Images.block}
+        />
         <DRSMenuButton
           title={'Log out'}
           imageSource={Images.disconnect}

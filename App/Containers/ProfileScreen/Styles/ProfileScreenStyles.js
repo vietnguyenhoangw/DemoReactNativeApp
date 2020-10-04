@@ -16,13 +16,14 @@ export default StyleSheet.create({
     height: Metrics.quintupleBaseMargin * 2,
     width: Metrics.quintupleBaseMargin * 2,
     borderColor: Colors.black,
-    borderWidth: 1.5,
     position: 'absolute',
     top: Metrics.screenHeight / 4.8,
     left: Metrics.screenWidth / 2.8,
   },
   avatarPhoto: {
     height: Metrics.quintupleBaseMargin * 2,
+    width: Metrics.quintupleBaseMargin * 2,
+    borderWidth: 1,
   },
   nameContaint: {
     marginTop: Metrics.tripleBaseMargin,
