@@ -17,7 +17,7 @@ function DRSLoadingBar({processValue}) {
       <Progress.Bar
         progress={processValue}
         width={Metrics.screenWidth}
-        color={Colors.greyLight}
+        color={'red'}
       />
     </View>
   );

@@ -9,7 +9,7 @@ import AuthActions from '../../Redux/AuthRedux';
 import styles from './Styles/LoginScreenStyle';
 
 // import validate
-import {isValidEmail, isValidPassword} from '../../Utils/validator';
+import {isValidEmail, isValidPassword} from '../../Utils/Validator';
 
 // components 
 import { RDSTextInputWithTitle, RDSLinkButton, DRSLoading, DRSTabBar } from '../../Components/index'

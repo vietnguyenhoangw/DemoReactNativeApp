@@ -1,6 +1,6 @@
 import { call, put, select } from 'redux-saga/effects';
 import AuthRedux from '../Redux/AuthRedux';
-import { getErrorAPI } from '../Functions/errorFuntions';
+import { getErrorAPI } from '../Functions/ErrorFuntions';
 import AsyncStorage from '@react-native-community/async-storage'
 
 // Redux
