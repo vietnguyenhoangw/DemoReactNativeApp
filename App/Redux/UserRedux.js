@@ -24,10 +24,14 @@ const {Types, Creators} = createActions({
   setCoverRequest: ['coverInfo'],
   setCoverSuccess: [],
   setCoverFailure: ['errorSetCover'],
-  
+
   getUserByIdRequest: ['userId'],
   getUserByIdSuccess: ['userByIdData'],
   getUserByIdFailure: ['errorGetUserById'],
+
+  getPostByUserIdRequest: ['userId'],
+  getPostByUserIdSuccess: ['postByUserId'],
+  getPostByUserIdFailure: ['errorGetPostByUserId'],
 });
 
 export const UserTypes = Types;
@@ -35,6 +39,8 @@ export default Creators;
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
+  progressUpload: 0,
+
   featuredPhotos: null,
 
   errorGetFeaturedPhotos: null,
@@ -53,21 +59,21 @@ export const INITIAL_STATE = Immutable({
   errorSetAvatar: null,
   showUploadAvatarProcessBar: false,
 
-  progressUpload: 0,
-
   fetchingGetUserById: false,
   userByIdData: null,
-  errorGetUserById: null
+  errorGetUserById: null,
+
+  postByUserId: [],
+
+  errorGetPostByUserId: null,
+  fetchingGetPostByUserId: false,
 });
 
 /* ------------- Reducers ------------- */
-export const uploadProgress = (
-  state,
-  { progressUpload }
-) => {
-  const newProgressUpload = progressUpload / 100
-  return state.merge({ progressUpload: newProgressUpload })
-}
+export const uploadProgress = (state, {progressUpload}) => {
+  const newProgressUpload = progressUpload / 100;
+  return state.merge({progressUpload: newProgressUpload});
+};
 
 export const getFeaturedPhotosRequest = (state) => {
   return state.merge({
@@ -103,10 +109,8 @@ export const setAvatarSuccess = (state) =>
   state.merge({
     fetchingSetAvatar: false,
   });
-export const setAvatarFailure = (
-  state,
-  {errorSetAvatar},
-) => state.merge({fetchingSetAvatar: false, errorSetAvatar});
+export const setAvatarFailure = (state, {errorSetAvatar}) =>
+  state.merge({fetchingSetAvatar: false, errorSetAvatar});
 
 export const getUserByIdRequest = (state) => {
   return state.merge({
@@ -119,10 +123,20 @@ export const getUserByIdSuccess = (state, {userByIdData}) =>
 export const getUserByIdFailure = (state, {errorGetUserById}) =>
   state.merge({fetchingGetUserById: false, errorGetUserById});
 
+export const getPostByUserIdRequest = (state) => {
+  return state.merge({
+    fetchingGetPostByUserId: true,
+    errorGetPostByUserId: null,
+  });
+};
+export const getPostByUserIdSuccess = (state, {postByUserId}) =>
+  state.merge({fetchingGetPostByUserId: false, postByUserId});
+export const getPostByUserIdFailure = (state, {errorGetPostByUserId}) =>
+  state.merge({fetchingGetPostByUserId: false, errorGetPostByUserId});
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.UPLOAD_PROGRESS]: uploadProgress,
-  
+
   [Types.GET_FEATURED_PHOTOS_REQUEST]: getFeaturedPhotosRequest,
   [Types.GET_FEATURED_PHOTOS_SUCCESS]: getFeaturedPhotosSuccess,
   [Types.GET_FEATURED_PHOTOS_FAILURE]: getFeaturedPhotosFailure,
@@ -142,4 +156,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_USER_BY_ID_REQUEST]: getUserByIdRequest,
   [Types.GET_USER_BY_ID_SUCCESS]: getUserByIdSuccess,
   [Types.GET_USER_BY_ID_FAILURE]: getUserByIdFailure,
+
+  [Types.GET_POST_BY_USER_ID_REQUEST]: getPostByUserIdRequest,
+  [Types.GET_POST_BY_USER_ID_SUCCESS]: getPostByUserIdSuccess,
+  [Types.GET_POST_BY_USER_ID_FAILURE]: getPostByUserIdFailure,
 });

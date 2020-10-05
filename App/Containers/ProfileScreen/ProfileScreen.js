@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -139,9 +139,9 @@ function ProfileScreen() {
   };
 
   return (
-    <View style={styles.viewOnScreen}>
+    <ScrollView style={styles.viewOnScreen}>
       <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
-    </View>
+    </ScrollView>
   );
 }
 

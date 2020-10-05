@@ -43,6 +43,10 @@ function HomeScreen() {
     <View style={styles.viewOnScreen}>
       {!isAllowLocation ? (
         isNotAllowLocation()
+      ) : post ? (
+        <Text style={styles.permisionText}>
+          {'Do not have any post around you !'}
+        </Text>
       ) : (
         <DRSFlatlist listData={post} />
       )}

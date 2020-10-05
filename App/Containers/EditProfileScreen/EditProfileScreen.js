@@ -24,7 +24,6 @@ import {isValidTextWithLength} from '../../Utils/Validator';
 function EditProfileScreen({navigation: {goBack}}) {
   const userState = useSelector((state) => state.auth);
   const userData = userState.userData.user;
-  console.log('EditProfileScreen -> userData', userData);
   const featuredPhotos = userData.featuredPhotos;
   const refAnimation = useRef(null);
 

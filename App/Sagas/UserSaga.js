@@ -87,6 +87,7 @@ export function * uploadImageAvatarSaga (accessToken, avatarInfo, api) {
           const parseSuccess = JSON.parse(success.responseBody)
           yield put(AuthRedux.changeMyAvatar(parseSuccess.url))
           yield put(UserRedux.setAvatarSuccess())
+          yield put(UserRedux.uploadProgress(0))
           break
         }
         yield put(UserRedux.uploadProgress(progress))
@@ -117,14 +118,33 @@ export function * uploadImageAvatar (accessToken, avatarInfo, api) {
 export function* getUserById(api, userId) {
   /* Check authentication token */
   const accessToken = yield select(selectUserToken);
-  const response = yield call(api.getUserById, accessToken, userId);
+  const response = yield call(api.getUserById, accessToken, userId.userId);
   try {
     if (response.ok && response.status === 200) {
-      yield put(UserRedux.getUserPostSuccess(response.data));
+      yield put(UserRedux.getUserByIdSuccess(response.data));
     } else {
-      yield put(UserRedux.getUserPostFailure(response));
+      yield put(UserRedux.getUserByIdFailure(response));
     }
   } catch (error) {
-    yield put(UserRedux.getUserPostFailure(error.message));
+    yield put(UserRedux.getUserByIdFailure(error.message));
+  }
+}
+
+export function* getPostByUserID(api, userId) {
+  /* Check authentication token */
+  const accessToken = yield select(selectUserToken);
+  const response = yield call(
+    api.getPostByUserIdApi,
+    accessToken,
+    userId.userId
+  );
+  try {
+    if (response.ok && response.status === 200) {
+      yield put(UserRedux.getPostByUserIdSuccess(response.data.results));
+    } else {
+      yield put(UserRedux.getPostByUserIdFailure(response));
+    }
+  } catch (error) {
+    yield put(UserRedux.getPostByUserIdFailure(error.message));
   }
 }

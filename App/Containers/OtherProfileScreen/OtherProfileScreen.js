@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 import UserActions from '../../Redux/UserRedux';
+import PostActions from '../../Redux/PostRedux';
 
 // styles
 import styles from './Styles/OtherProfileScreenStyles';
@@ -14,27 +15,29 @@ import {
   DRSFlatlist,
   DRSImage,
   DRSViewImage,
-  DRSLoadingBar,
+  DRSLoading,
 } from '../../Components';
 
 function OtherProfileScreen({route}) {
-  const { cardItem } = route.params;
+  const {cardItem} = route.params;
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const userData = cardItem;
-  const fetchingGetUserPost = userState.fetchingGetUserPost;
-  const fetchingSetAvatar = userState.fetchingSetAvatar;
-  const progressUpload = userState.progressUpload;
-  const featuredPhotos = userData.featuredPhotos;
-  const userPost = userState.userPost.results;
+  const featuredPhotos = userState.userByIdData?.featuredPhotos;
+  const userPost = userState.postByUserId;
+  const fetchingGetUserByIdRequest = userState.fetchingGetUserById;
+  const fetchingGetPostByUserIdRequest = userState.fetchingGetPostByUserId;
 
   let newImageUrlList = [];
-  featuredPhotos.filter((item) => {
+  featuredPhotos && featuredPhotos.filter((item) => {
     newImageUrlList.push({uri: item.url});
   });
 
   useEffect(() => {
-    (cardItem) && dispatch(UserActions.getUserByIdRequest(cardItem._id));
+    if (cardItem) {
+      dispatch(UserActions.getUserByIdRequest(cardItem._id));
+      dispatch(UserActions.getPostByUserIdRequest(cardItem._id));
+    }
   }, []);
 
   const renderHeader = () => {
@@ -66,7 +69,6 @@ function OtherProfileScreen({route}) {
             <Text style={styles.descriptionsText}>{userData.city}</Text>
           )}
         </View>
-        {fetchingSetAvatar && <DRSLoadingBar processValue={progressUpload} />}
         <DRSMultiplePhoto
           containerStyle={styles.multiplePhotoContainer}
           btnOnPressAble={false}
@@ -83,6 +85,8 @@ function OtherProfileScreen({route}) {
   return (
     <View style={styles.viewOnScreen}>
       <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
+      {fetchingGetUserByIdRequest ||
+        (fetchingGetPostByUserIdRequest && <DRSLoading />)}
     </View>
   );
 }

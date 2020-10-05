@@ -37,7 +37,6 @@ function ListFriendScreen({navigation}) {
   },[fetchingGetListFriend])
 
   const onPressProfile = (item) => {
-    console.log("onPressProfile -> item", item)
     navigation.navigate('OtherProfileScreen', {cardItem: item});
   };
 

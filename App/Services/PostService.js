@@ -20,7 +20,7 @@ const create = (baseURL = ApiConfig.baseURL + '/polytag') => {
   }
 
   return {
-    getPostApi
+    getPostApi,
   };
 };
 

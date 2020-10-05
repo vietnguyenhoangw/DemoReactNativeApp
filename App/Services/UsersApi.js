@@ -39,9 +39,12 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
 
   function getUserById(token, userId) {
     api.setHeaders({Authorization: `Bearer ${token}`});
-    return api.get('', {
-      userId
-    })
+    return api.get(`/${userId}`)
+  }
+
+  function getPostByUserIdApi(token, userId) {
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get(`/${userId}/polytags`)
   }
 
   return {
@@ -50,7 +53,8 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     getUserPost,
     getListFriend,
     setAvatarApi,
-    getUserById
+    getUserById,
+    getPostByUserIdApi
   };
 };
 
