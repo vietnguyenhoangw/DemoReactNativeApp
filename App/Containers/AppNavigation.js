@@ -12,6 +12,7 @@ import SplashScreen from './SplashScreen';
 import {EditProfileScreen} from './EditProfileScreen';
 import {LocationScreen} from './LocationScreen'
 import {ListFriendScreen} from './ListFriendScreen'
+import {OtherProfileScreen} from './OtherProfileScreen'
 
 // HomeTab
 import {DRSTabBar} from '../Components';
@@ -52,6 +53,7 @@ function AppStacks() {
       <AppStack.Screen name="ProfileScreen" component={ProfileScreen} />
       <AppStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <AppStack.Screen name="LocationScreen" component={LocationScreen} />
+      <AppStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} />
     </AppStack.Navigator>
   );
 }

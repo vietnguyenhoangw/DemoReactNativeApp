@@ -3,6 +3,8 @@ import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 const {Types, Creators} = createActions({
+  uploadProgress: ['progressUpload'],
+
   getFeaturedPhotosRequest: ['userId'],
   getFeaturedPhotosSuccess: ['featuredPhotos'],
   getFeaturedPhotosFailure: ['errorGetFeaturedPhotos'],
@@ -23,7 +25,9 @@ const {Types, Creators} = createActions({
   setCoverSuccess: [],
   setCoverFailure: ['errorSetCover'],
   
-  uploadProgress: ['progressUpload'],
+  getUserByIdRequest: ['userId'],
+  getUserByIdSuccess: ['userByIdData'],
+  getUserByIdFailure: ['errorGetUserById'],
 });
 
 export const UserTypes = Types;
@@ -49,10 +53,22 @@ export const INITIAL_STATE = Immutable({
   errorSetAvatar: null,
   showUploadAvatarProcessBar: false,
 
-  progressUpload: 0
+  progressUpload: 0,
+
+  fetchingGetUserById: false,
+  userByIdData: null,
+  errorGetUserById: null
 });
 
 /* ------------- Reducers ------------- */
+export const uploadProgress = (
+  state,
+  { progressUpload }
+) => {
+  const newProgressUpload = progressUpload / 100
+  return state.merge({ progressUpload: newProgressUpload })
+}
+
 export const getFeaturedPhotosRequest = (state) => {
   return state.merge({
     fetchingGetFeaturedPhotos: true,
@@ -92,16 +108,21 @@ export const setAvatarFailure = (
   {errorSetAvatar},
 ) => state.merge({fetchingSetAvatar: false, errorSetAvatar});
 
-export const uploadProgress = (
-  state,
-  { progressUpload }
-) => {
-  const newProgressUpload = progressUpload / 100
-  return state.merge({ progressUpload: newProgressUpload })
-}
+export const getUserByIdRequest = (state) => {
+  return state.merge({
+    fetchingGetUserById: true,
+    errorGetUserById: null,
+  });
+};
+export const getUserByIdSuccess = (state, {userByIdData}) =>
+  state.merge({fetchingGetUserById: false, userByIdData});
+export const getUserByIdFailure = (state, {errorGetUserById}) =>
+  state.merge({fetchingGetUserById: false, errorGetUserById});
 
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.UPLOAD_PROGRESS]: uploadProgress,
+  
   [Types.GET_FEATURED_PHOTOS_REQUEST]: getFeaturedPhotosRequest,
   [Types.GET_FEATURED_PHOTOS_SUCCESS]: getFeaturedPhotosSuccess,
   [Types.GET_FEATURED_PHOTOS_FAILURE]: getFeaturedPhotosFailure,
@@ -117,6 +138,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_AVATAR_REQUEST]: setAvatarRequest,
   [Types.SET_AVATAR_SUCCESS]: setAvatarSuccess,
   [Types.SET_AVATAR_FAILURE]: setAvatarFailure,
-  
-  [Types.UPLOAD_PROGRESS]: uploadProgress,
+
+  [Types.GET_USER_BY_ID_REQUEST]: getUserByIdRequest,
+  [Types.GET_USER_BY_ID_SUCCESS]: getUserByIdSuccess,
+  [Types.GET_USER_BY_ID_FAILURE]: getUserByIdFailure,
 });

@@ -19,6 +19,7 @@ import {
   getUserPost,
   getListFriendSaga,
   uploadAvatarSaga,
+  getUserById
 } from './UserSaga';
 import {getPost} from './PostSaga';
 
@@ -57,6 +58,9 @@ export default function* rootSaga() {
   ]);
   yield all([
     takeLatest(UserTypes.SET_AVATAR_REQUEST, uploadAvatarSaga, usersApi),
+  ]);
+  yield all([
+    takeLatest(UserTypes.GET_USER_BY_ID_REQUEST, getUserById, usersApi),
   ]);
 
   // post

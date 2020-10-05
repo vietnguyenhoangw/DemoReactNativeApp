@@ -113,3 +113,18 @@ export function * uploadImageAvatar (accessToken, avatarInfo, api) {
     console.log(error.message)
   }
 }
+
+export function* getUserById(api, userId) {
+  /* Check authentication token */
+  const accessToken = yield select(selectUserToken);
+  const response = yield call(api.getUserById, accessToken, userId);
+  try {
+    if (response.ok && response.status === 200) {
+      yield put(UserRedux.getUserPostSuccess(response.data));
+    } else {
+      yield put(UserRedux.getUserPostFailure(response));
+    }
+  } catch (error) {
+    yield put(UserRedux.getUserPostFailure(error.message));
+  }
+}

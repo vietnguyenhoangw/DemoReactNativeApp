@@ -37,12 +37,20 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return newUploadFile('/users/avatar', path, token, process, response, error)
   }
 
+  function getUserById(token, userId) {
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get('', {
+      userId
+    })
+  }
+
   return {
     getMeApi,
     getFeaturedPhotos,
     getUserPost,
     getListFriend,
-    setAvatarApi
+    setAvatarApi,
+    getUserById
   };
 };
 

@@ -14,7 +14,7 @@ import {DRSFriendCard, DRSLoading} from '../../Components';
 // function
 import {usePrevious} from '../../Functions/AppFunction';
 
-function ListFriendScreen() {
+function ListFriendScreen({navigation}) {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const friendList = userState.userFriendList.results
@@ -36,8 +36,13 @@ function ListFriendScreen() {
     }
   },[fetchingGetListFriend])
 
+  const onPressProfile = (item) => {
+    console.log("onPressProfile -> item", item)
+    navigation.navigate('OtherProfileScreen', {cardItem: item});
+  };
+
   const renderItem = ({item}) => {
-    return <DRSFriendCard item={item}/>;
+    return <DRSFriendCard item={item} onPressItem={onPressProfile}/>;
   };
 
   return (
