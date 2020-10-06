@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, Alert, ScrollView} from 'react-native';
 
 // component
-import {DRSFlatlist} from '../../Components';
+import {DRSFlatlist, DRSLoading} from '../../Components';
 
 // styles
 import styles from './Styles/HomeScreenStyles';
@@ -22,6 +22,8 @@ function HomeScreen() {
   const isAllowLocation = appState.isAllowLocation;
   const location = appState.location;
   const post = postState.otherPost.results;
+  const fetchingGetOtherPost = postState.fetchingGetOtherPost
+  const errorOtherPost = postState.errorOtherPost
 
   const isNotAllowLocation = () => {
     const permisionText =
@@ -43,13 +45,14 @@ function HomeScreen() {
     <View style={styles.viewOnScreen}>
       {!isAllowLocation ? (
         isNotAllowLocation()
-      ) : Boolean(post) ? (
+      ) : Boolean(post) || errorOtherPost ? (
         <Text style={styles.permisionText}>
           {'Do not have any post around you !'}
         </Text>
       ) : (
         <DRSFlatlist listData={post} />
       )}
+      {fetchingGetOtherPost && <DRSLoading />}
     </View>
   );
 }

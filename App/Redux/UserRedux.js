@@ -32,6 +32,10 @@ const {Types, Creators} = createActions({
   getPostByUserIdRequest: ['userId'],
   getPostByUserIdSuccess: ['postByUserId'],
   getPostByUserIdFailure: ['errorGetPostByUserId'],
+
+  setCoverRequest: ['coverInfo'],
+  setCoverSuccess: [],
+  setCoverFailure: ['errorSetCover'],
 });
 
 export const UserTypes = Types;
@@ -67,6 +71,10 @@ export const INITIAL_STATE = Immutable({
 
   errorGetPostByUserId: null,
   fetchingGetPostByUserId: false,
+
+  fetchingSetCover: false,
+  errorSetCover: null,
+  showUploadCoverProcessBar: false,
 });
 
 /* ------------- Reducers ------------- */
@@ -133,6 +141,15 @@ export const getPostByUserIdSuccess = (state, {postByUserId}) =>
   state.merge({fetchingGetPostByUserId: false, postByUserId});
 export const getPostByUserIdFailure = (state, {errorGetPostByUserId}) =>
   state.merge({fetchingGetPostByUserId: false, errorGetPostByUserId});
+
+export const setCoverRequest = (state) =>
+  state.merge({fetchingSetCover: true, errorSetCover: null});
+export const setCoverSuccess = (state) =>
+  state.merge({
+    fetchingSetCover: false,
+  });
+export const setCoverFailure = (state, {errorSetCover}) =>
+  state.merge({fetchingSetCover: false, errorSetCover});
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.UPLOAD_PROGRESS]: uploadProgress,
@@ -160,4 +177,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_POST_BY_USER_ID_REQUEST]: getPostByUserIdRequest,
   [Types.GET_POST_BY_USER_ID_SUCCESS]: getPostByUserIdSuccess,
   [Types.GET_POST_BY_USER_ID_FAILURE]: getPostByUserIdFailure,
+
+  [Types.SET_COVER_REQUEST]: setCoverRequest,
+  [Types.SET_COVER_SUCCESS]: setCoverSuccess,
+  [Types.SET_COVER_FAILURE]: setCoverFailure,
 });

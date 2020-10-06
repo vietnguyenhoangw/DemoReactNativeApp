@@ -47,6 +47,12 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return api.get(`/${userId}/polytags`)
   }
 
+  function setCoverApi(token, data, process, response, error) {
+    const path = data.replace('file://', '')
+    return newUploadFile('/users/cover', path, token, process, response, error)
+  }
+
+
   return {
     getMeApi,
     getFeaturedPhotos,
@@ -54,7 +60,8 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     getListFriend,
     setAvatarApi,
     getUserById,
-    getPostByUserIdApi
+    getPostByUserIdApi,
+    setCoverApi
   };
 };
 
