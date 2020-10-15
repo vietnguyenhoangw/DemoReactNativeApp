@@ -13,7 +13,10 @@ import {EditProfileScreen} from './EditProfileScreen';
 import {LocationScreen} from './LocationScreen'
 import {ListFriendScreen} from './ListFriendScreen'
 import {OtherProfileScreen} from './OtherProfileScreen'
+<<<<<<< HEAD
 import {PostingScreen} from './PostingScreen'
+=======
+>>>>>>> a5c31a289eba556678ff671b2e684c36d96604a2
 
 // HomeTab
 import {DRSTabBar} from '../Components';
@@ -55,7 +58,10 @@ function AppStacks() {
       <AppStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <AppStack.Screen name="LocationScreen" component={LocationScreen} />
       <AppStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} />
+<<<<<<< HEAD
       <AppStack.Screen name="PostingScreen" component={PostingScreen} />
+=======
+>>>>>>> a5c31a289eba556678ff671b2e684c36d96604a2
     </AppStack.Navigator>
   );
 }
