@@ -3,6 +3,8 @@ import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 const {Types, Creators} = createActions({
+  uploadProgress: ['progressUpload'],
+
   getFeaturedPhotosRequest: ['userId'],
   getFeaturedPhotosSuccess: ['featuredPhotos'],
   getFeaturedPhotosFailure: ['errorGetFeaturedPhotos'],
@@ -22,8 +24,18 @@ const {Types, Creators} = createActions({
   setCoverRequest: ['coverInfo'],
   setCoverSuccess: [],
   setCoverFailure: ['errorSetCover'],
-  
-  uploadProgress: ['progressUpload'],
+
+  getUserByIdRequest: ['userId'],
+  getUserByIdSuccess: ['userByIdData'],
+  getUserByIdFailure: ['errorGetUserById'],
+
+  getPostByUserIdRequest: ['userId'],
+  getPostByUserIdSuccess: ['postByUserId'],
+  getPostByUserIdFailure: ['errorGetPostByUserId'],
+
+  setCoverRequest: ['coverInfo'],
+  setCoverSuccess: [],
+  setCoverFailure: ['errorSetCover'],
 });
 
 export const UserTypes = Types;
@@ -31,6 +43,8 @@ export default Creators;
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
+  progressUpload: 0,
+
   featuredPhotos: null,
 
   errorGetFeaturedPhotos: null,
@@ -49,10 +63,26 @@ export const INITIAL_STATE = Immutable({
   errorSetAvatar: null,
   showUploadAvatarProcessBar: false,
 
-  progressUpload: 0
+  fetchingGetUserById: false,
+  userByIdData: null,
+  errorGetUserById: null,
+
+  postByUserId: [],
+
+  errorGetPostByUserId: null,
+  fetchingGetPostByUserId: false,
+
+  fetchingSetCover: false,
+  errorSetCover: null,
+  showUploadCoverProcessBar: false,
 });
 
 /* ------------- Reducers ------------- */
+export const uploadProgress = (state, {progressUpload}) => {
+  const newProgressUpload = progressUpload / 100;
+  return state.merge({progressUpload: newProgressUpload});
+};
+
 export const getFeaturedPhotosRequest = (state) => {
   return state.merge({
     fetchingGetFeaturedPhotos: true,
@@ -87,21 +117,43 @@ export const setAvatarSuccess = (state) =>
   state.merge({
     fetchingSetAvatar: false,
   });
-export const setAvatarFailure = (
-  state,
-  {errorSetAvatar},
-) => state.merge({fetchingSetAvatar: false, errorSetAvatar});
+export const setAvatarFailure = (state, {errorSetAvatar}) =>
+  state.merge({fetchingSetAvatar: false, errorSetAvatar});
 
-export const uploadProgress = (
-  state,
-  { progressUpload }
-) => {
-  const newProgressUpload = progressUpload / 100
-  return state.merge({ progressUpload: newProgressUpload })
-}
+export const getUserByIdRequest = (state) => {
+  return state.merge({
+    fetchingGetUserById: true,
+    errorGetUserById: null,
+  });
+};
+export const getUserByIdSuccess = (state, {userByIdData}) =>
+  state.merge({fetchingGetUserById: false, userByIdData});
+export const getUserByIdFailure = (state, {errorGetUserById}) =>
+  state.merge({fetchingGetUserById: false, errorGetUserById});
 
+export const getPostByUserIdRequest = (state) => {
+  return state.merge({
+    fetchingGetPostByUserId: true,
+    errorGetPostByUserId: null,
+  });
+};
+export const getPostByUserIdSuccess = (state, {postByUserId}) =>
+  state.merge({fetchingGetPostByUserId: false, postByUserId});
+export const getPostByUserIdFailure = (state, {errorGetPostByUserId}) =>
+  state.merge({fetchingGetPostByUserId: false, errorGetPostByUserId});
+
+export const setCoverRequest = (state) =>
+  state.merge({fetchingSetCover: true, errorSetCover: null});
+export const setCoverSuccess = (state) =>
+  state.merge({
+    fetchingSetCover: false,
+  });
+export const setCoverFailure = (state, {errorSetCover}) =>
+  state.merge({fetchingSetCover: false, errorSetCover});
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.UPLOAD_PROGRESS]: uploadProgress,
+
   [Types.GET_FEATURED_PHOTOS_REQUEST]: getFeaturedPhotosRequest,
   [Types.GET_FEATURED_PHOTOS_SUCCESS]: getFeaturedPhotosSuccess,
   [Types.GET_FEATURED_PHOTOS_FAILURE]: getFeaturedPhotosFailure,
@@ -117,6 +169,16 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_AVATAR_REQUEST]: setAvatarRequest,
   [Types.SET_AVATAR_SUCCESS]: setAvatarSuccess,
   [Types.SET_AVATAR_FAILURE]: setAvatarFailure,
-  
-  [Types.UPLOAD_PROGRESS]: uploadProgress,
+
+  [Types.GET_USER_BY_ID_REQUEST]: getUserByIdRequest,
+  [Types.GET_USER_BY_ID_SUCCESS]: getUserByIdSuccess,
+  [Types.GET_USER_BY_ID_FAILURE]: getUserByIdFailure,
+
+  [Types.GET_POST_BY_USER_ID_REQUEST]: getPostByUserIdRequest,
+  [Types.GET_POST_BY_USER_ID_SUCCESS]: getPostByUserIdSuccess,
+  [Types.GET_POST_BY_USER_ID_FAILURE]: getPostByUserIdFailure,
+
+  [Types.SET_COVER_REQUEST]: setCoverRequest,
+  [Types.SET_COVER_SUCCESS]: setCoverSuccess,
+  [Types.SET_COVER_FAILURE]: setCoverFailure,
 });

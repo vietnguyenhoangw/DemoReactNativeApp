@@ -37,12 +37,31 @@ const create = (baseURL = ApiConfig.baseURL + '/users') => {
     return newUploadFile('/users/avatar', path, token, process, response, error)
   }
 
+  function getUserById(token, userId) {
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get(`/${userId}`)
+  }
+
+  function getPostByUserIdApi(token, userId) {
+    api.setHeaders({Authorization: `Bearer ${token}`});
+    return api.get(`/${userId}/polytags`)
+  }
+
+  function setCoverApi(token, data, process, response, error) {
+    const path = data.replace('file://', '')
+    return newUploadFile('/users/cover', path, token, process, response, error)
+  }
+
+
   return {
     getMeApi,
     getFeaturedPhotos,
     getUserPost,
     getListFriend,
-    setAvatarApi
+    setAvatarApi,
+    getUserById,
+    getPostByUserIdApi,
+    setCoverApi
   };
 };
 
