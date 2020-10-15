@@ -16,5 +16,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: Metrics.halfTripleBaseMargin + 2
+  },
+  emptyText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: Metrics.halfTripleBaseMargin + 2
   }
 });

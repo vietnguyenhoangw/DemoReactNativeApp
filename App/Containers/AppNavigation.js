@@ -12,6 +12,8 @@ import SplashScreen from './SplashScreen';
 import {EditProfileScreen} from './EditProfileScreen';
 import {LocationScreen} from './LocationScreen'
 import {ListFriendScreen} from './ListFriendScreen'
+import {OtherProfileScreen} from './OtherProfileScreen'
+import {PostingScreen} from './PostingScreen'
 
 // HomeTab
 import {DRSTabBar} from '../Components';
@@ -35,8 +37,8 @@ function HomeTabs() {
     <Tab.Navigator
       backBehavior={'none'}
       tabBar={(props) => <DRSTabBar {...props} />}>
-      <Tab.Screen name={'HomeScreen'} component={HomeScreen} />
       <Tab.Screen name={'ListFriendScreen'} component={ListFriendScreen} />
+      <Tab.Screen name={'HomeScreen'} component={HomeScreen} />
       <Tab.Screen name={'MenuScreen'} component={MenuScreen} />
     </Tab.Navigator>
   );
@@ -48,10 +50,12 @@ const AppStack = createStackNavigator();
 function AppStacks() {
   return (
     <AppStack.Navigator>
-      <AppStack.Screen name={'HomeTab'} component={HomeTabs} />
+      <AppStack.Screen name={'Demoreduxsaga'} component={HomeTabs} />
       <AppStack.Screen name="ProfileScreen" component={ProfileScreen} />
       <AppStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <AppStack.Screen name="LocationScreen" component={LocationScreen} />
+      <AppStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} />
+      <AppStack.Screen name="PostingScreen" component={PostingScreen} />
     </AppStack.Navigator>
   );
 }

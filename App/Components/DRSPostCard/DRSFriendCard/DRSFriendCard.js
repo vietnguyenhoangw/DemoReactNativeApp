@@ -13,11 +13,11 @@ import {Metrics, Images} from '../../../Themes';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 
-function DRSFriendCard({imageSource, item}) {
+function DRSFriendCard({imageSource, item, onPressItem}) {
   const {fullName, avatarUrl, job} = item;
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => onPressItem(item)}>
       <DRSImage
         resizeMode={'cover'}
         source={avatarUrl}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Alert, Text, TouchableOpacity} from 'react-native';
+import Toast from 'react-native-simple-toast';
 
 // styles
 import styles from './styles/MenuScreenStyles';
@@ -91,15 +92,16 @@ function MenuScreen({navigation}) {
           imageSource={Images.edit}
           onPress={onEditProfile}
         />
-        <DRSMenuButton
+        {/* <DRSMenuButton
           title={'My Message'}
           imageSource={Images.message}
-          onPress={checkPermissionLocation}
+          onPress={() => {Toast.show('Message is coming soon', Toast.SHORT);}}
         />
         <DRSMenuButton
           title={'Blocked people'}
           imageSource={Images.block}
-        />
+          onPress={() => {Toast.show('Blocked people is coming soon', Toast.SHORT);}}
+        /> */}
         <DRSMenuButton
           title={'Log out'}
           imageSource={Images.disconnect}

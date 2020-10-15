@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import store from '../Redux/CreateStore';
 import RootContainer from './RootContainer';
+import PushNotificationController from './PushNotificationController'
 
 export default class App extends Component {
   state = {};
@@ -11,6 +12,7 @@ export default class App extends Component {
       <Provider store={store}>
         <View style={styles.container}>
           <RootContainer />
+          <PushNotificationController />
         </View>
       </Provider>
     );

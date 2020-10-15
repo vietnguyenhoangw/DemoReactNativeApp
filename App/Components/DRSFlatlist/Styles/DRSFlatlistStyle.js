@@ -8,9 +8,10 @@ export default StyleSheet.create({
     flex: 1,
   },
   emptyText: {
-    marginTop: Metrics.halfQuintupleBaseMargin,
+    marginVertical: Metrics.halfQuintupleBaseMargin,
     textAlign: 'center',
-    fontSize: Metrics.halfQuintupleBaseMargin,
+    fontWeight: 'bold',
+    fontSize: Metrics.halfTripleBaseMargin + 2
   },
   item: {
     backgroundColor: '#f9c2ff',

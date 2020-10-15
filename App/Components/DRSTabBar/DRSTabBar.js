@@ -10,13 +10,13 @@ function DRSTabBar({state, navigation}, ref) {
 
   const onPressHomeTab = () => {
     if (index !== 0) {
-      navigation.navigate('HomeScreen');
+      navigation.navigate('ListFriendScreen');
     }
   };
 
   const onPressFriendTab = () => {
     if (index !== 1) {
-      navigation.navigate('ListFriendScreen');
+      navigation.navigate('HomeScreen');
     }
   };
 
@@ -26,11 +26,17 @@ function DRSTabBar({state, navigation}, ref) {
     }
   };
 
+  const onPressPostingTab= () => {
+    if (index !== 3) {
+      navigation.navigate('PostingScreen');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.tabButton} onPress={onPressHomeTab}>
         <Image
-          source={Images.earth}
+          source={Images.friends}
           style={[
             styles.iconButton,
             {
@@ -39,9 +45,20 @@ function DRSTabBar({state, navigation}, ref) {
           ]}
         />
       </TouchableOpacity>
+      <TouchableOpacity style={styles.tabButton} onPress={onPressPostingTab}>
+        <Image
+          source={Images.camera}
+          style={[
+            styles.iconButton,
+            {
+              tintColor: index === 3 ? Colors.nightRider : Colors.veryLightGrey,
+            },
+          ]}
+        />
+      </TouchableOpacity>
       <TouchableOpacity style={styles.tabButton} onPress={onPressFriendTab}>
         <Image
-          source={Images.friends}
+          source={Images.earth}
           style={[
             styles.iconButton,
             {

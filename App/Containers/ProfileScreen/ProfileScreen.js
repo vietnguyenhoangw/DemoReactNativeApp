@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 import UserActions from '../../Redux/UserRedux';
-import AuthActions from '../../Redux/AuthRedux';
 
 // styles
 import styles from './Styles/ProfileScreenStyles';
@@ -33,11 +32,11 @@ function ProfileScreen() {
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
   const userData = authState.userData.user;
-  const fetchingGetUserPost = userState.fetchingGetUserPost;
   const fetchingSetAvatar = userState.fetchingSetAvatar;
   const progressUpload = userState.progressUpload;
   const featuredPhotos = userData.featuredPhotos;
   const userPost = userState.userPost.results;
+  const fetchingSetCover = userState.fetchingSetCover;
 
   let newImageUrlList = [];
   featuredPhotos.filter((item) => {
@@ -49,20 +48,20 @@ function ProfileScreen() {
   }, []);
 
   const onPressChangeCoverPhoto = () => {
-    // checkPhotoLibraryPermission(async () => {
-    //   checkCameraPermission(async () => {
-    //     imagePicker((imageResource) => {
-    //       try {
-    //         const source = imageResource;
-    //         if (source) {
-    //           // dispatch(UserActions.setAvatarRequest(source));
-    //         }
-    //       } catch (error) {
-    //         console.log('Error in imagePicker: ', error);
-    //       }
-    //     });
-    //   });
-    // });
+    checkPhotoLibraryPermission(async () => {
+      checkCameraPermission(async () => {
+        imagePicker((imageResource) => {
+          try {
+            const source = imageResource;
+            if (source) {
+              dispatch(UserActions.setCoverRequest(source));
+            }
+          } catch (error) {
+            console.log('Error in imagePicker: ', error);
+          }
+        });
+      });
+    });
   };
 
   const onPressChangeAvatarPhoto = () => {
@@ -124,7 +123,8 @@ function ProfileScreen() {
             <Text style={styles.descriptionsText}>{userData.city}</Text>
           )}
         </View>
-        {fetchingSetAvatar && <DRSLoadingBar processValue={progressUpload} />}
+        {fetchingSetAvatar ||
+          (fetchingSetCover && <DRSLoadingBar processValue={progressUpload} />)}
         <DRSMultiplePhoto
           containerStyle={styles.multiplePhotoContainer}
           btnOnPressAble={false}
@@ -139,9 +139,9 @@ function ProfileScreen() {
   };
 
   return (
-    <View style={styles.viewOnScreen}>
+    <ScrollView style={styles.viewOnScreen}>
       <DRSFlatlist renderHeader={renderHeader} listData={userPost} />
-    </View>
+    </ScrollView>
   );
 }
 

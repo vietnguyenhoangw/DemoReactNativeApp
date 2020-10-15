@@ -66,10 +66,6 @@ function LoginScreen({navigation}) {
         setIsLoginEmail(true);
       }
     }
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: 'AppStack' }]
-    // })
   }
 
   return (
