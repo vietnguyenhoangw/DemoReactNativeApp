@@ -17,6 +17,7 @@ export default StyleSheet.create({
     tintColor: Colors.nightRider
   },
   btnContainer: {
-    padding: 10
+    padding: 10,
+    justifyContent: 'center'
   }
 })

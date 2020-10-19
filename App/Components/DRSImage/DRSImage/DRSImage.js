@@ -21,8 +21,8 @@ function DRSImage({
         )
 }
 
-DRSImage.defaultProps = {
-    resizeMode: 'contain'
-}
+// DRSImage.defaultProps = {
+//     resizeMode: 'contain'
+// }
 
 export default DRSImage

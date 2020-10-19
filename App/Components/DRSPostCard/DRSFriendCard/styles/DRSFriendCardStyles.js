@@ -32,6 +32,5 @@ export default StyleSheet.create({
 
   },
   menuIcon: {
-    flex: 1
   }
 });

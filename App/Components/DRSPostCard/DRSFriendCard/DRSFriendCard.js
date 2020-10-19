@@ -25,7 +25,7 @@ function DRSFriendCard({imageSource, item, onPressItem}) {
       />
       <View style={styles.textContainer}>
         <Text style={styles.nameText}>{fullName}</Text>
-        <Text style={styles.descriptionText}>{job}</Text>
+        {job && <Text style={styles.descriptionText}>{job}</Text>}
       </View>
       <DRSImageButton imagesStyle={styles.menuIcon} sourceImage={Images.subMenu}/>
     </TouchableOpacity>
