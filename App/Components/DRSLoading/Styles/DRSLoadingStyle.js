@@ -11,7 +11,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
-    backgroundColor: Colors.backgroundGray,
+    // backgroundColor: Colors.backgroundGray,
   },
   loadingWrapper: {
     backgroundColor: Colors.transparent,

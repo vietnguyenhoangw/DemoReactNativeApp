@@ -16,6 +16,9 @@ const images = {
     share: require('../Images/icons/share.png'),
     edit: require('../Images/icons/edit.png'),
     friends: require('../Images/icons/friends.png'),
+    flash: require('../Images/icons/flash.png'),
+    rotate: require('../Images/icons/rotate.png'),
+    flashoff: require('../Images/icons/flashoff.png'),
 }
 
 export default images

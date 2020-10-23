@@ -5721,6 +5721,13 @@ react-native-background-upload@^6.2.0:
   resolved "https://registry.yarnpkg.com/react-native-background-upload/-/react-native-background-upload-6.2.0.tgz#c7a5db94c2def8e464f5f770eaa7e62899660921"
   integrity sha512-cGDRprAeu6nKNdg4wbcffruDc/vHO4JpNk6cnfmuVYyZOGJ1Ei8b7vf7inQHgx38PLCpB3seNgyQoM9enGzksA==
 
+react-native-camera@^3.40.0:
+  version "3.40.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.40.0.tgz#69845991e46b0892cc2b50322d49b18f292c3202"
+  integrity sha512-Ur0hZqZcl3SntTVMB9GxuiLYpQxqwgzhQVb+7EGae4WjfDzQEwlGF0bJ7UpZyeUTb1oZmsiSib58xUckn11XMw==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-easy-toast@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-easy-toast/-/react-native-easy-toast-1.2.0.tgz#0f70bcb99e3306cda4800c244bfb4a67d42276ed"

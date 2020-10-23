@@ -28,7 +28,7 @@ function DRSTabBar({state, navigation}, ref) {
 
   const onPressPostingTab= () => {
     if (index !== 3) {
-      navigation.navigate('PostingScreen');
+      navigation.navigate('CameraScreen');
     }
   };
 

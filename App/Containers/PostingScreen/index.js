@@ -1,2 +1,3 @@
-import  PostingScreen  from './PostingScreen'
-export { PostingScreen }
+import PostingScreen from './PostingScreen';
+
+export {PostingScreen}
