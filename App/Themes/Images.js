@@ -19,6 +19,8 @@ const images = {
     flash: require('../Images/icons/flash.png'),
     rotate: require('../Images/icons/rotate.png'),
     flashoff: require('../Images/icons/flashoff.png'),
+    blackArrowBack: require('../Images/icons/blackArrowBack.png'),
+    cancel_black: require('../Images/icons/cancel_black.png'),
 }
 
 export default images

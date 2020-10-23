@@ -17,7 +17,7 @@ const PushNotificationController = () => {
     console.log('onOpened -> openResult', openResult);
   };
   const onIds = (device) => {
-    console.log('onIds -> device', device);
+    // console.log('onIds -> device', device);
   };
 
   useEffect(() => {

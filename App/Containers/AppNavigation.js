@@ -10,10 +10,11 @@ import {MenuScreen} from './MenuScreen';
 import {ProfileScreen} from './ProfileScreen/';
 import SplashScreen from './SplashScreen';
 import {EditProfileScreen} from './EditProfileScreen';
-import {LocationScreen} from './LocationScreen'
-import {ListFriendScreen} from './ListFriendScreen'
-import {OtherProfileScreen} from './OtherProfileScreen'
-import {CameraScreen} from './CameraScreen'
+import {LocationScreen} from './LocationScreen';
+import {ListFriendScreen} from './ListFriendScreen';
+import {OtherProfileScreen} from './OtherProfileScreen';
+import {CameraScreen} from './CameraScreen';
+import {PostingScreen} from './PostingScreen';
 
 // HomeTab
 import {DRSTabBar} from '../Components';
@@ -49,13 +50,20 @@ const AppStack = createStackNavigator();
 
 function AppStacks() {
   return (
-    <AppStack.Navigator>
+    <AppStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <AppStack.Screen name={'Demoreduxsaga'} component={HomeTabs} />
       <AppStack.Screen name="ProfileScreen" component={ProfileScreen} />
       <AppStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <AppStack.Screen name="LocationScreen" component={LocationScreen} />
-      <AppStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} />
+      <AppStack.Screen
+        name="OtherProfileScreen"
+        component={OtherProfileScreen}
+      />
       <AppStack.Screen name="CameraScreen" component={CameraScreen} />
+      <AppStack.Screen name="PostingScreen" component={PostingScreen} />
     </AppStack.Navigator>
   );
 }
