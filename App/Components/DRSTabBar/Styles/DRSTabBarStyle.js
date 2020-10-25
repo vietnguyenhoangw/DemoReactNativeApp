@@ -10,7 +10,9 @@ export default StyleSheet.create({
     paddingTop: Metrics.baseMargin,
     paddingHorizontal: Metrics.halfTripleBaseMargin,
     backgroundColor: Colors.white,
-    paddingBottom: Metrics.baseMargin
+    paddingBottom: Metrics.baseMargin,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
   },
   tabButton: {
     width: 40,

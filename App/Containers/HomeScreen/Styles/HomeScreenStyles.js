@@ -1,9 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 // theme
-import { Metrics } from '../../../Themes'
+import {Metrics} from '../../../Themes';
 
 export default StyleSheet.create({
+  container: {
+    flex: 1
+  },
   viewOnScreen: {
     flex: 1,
     justifyContent: 'center',
@@ -17,6 +20,6 @@ export default StyleSheet.create({
   permisionText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: Metrics.halfTripleBaseMargin + 2
-  }
+    fontSize: Metrics.halfTripleBaseMargin + 2,
+  },
 });

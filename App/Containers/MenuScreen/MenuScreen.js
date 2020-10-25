@@ -9,7 +9,7 @@ import styles from './styles/MenuScreenStyles';
 import {Images} from '../../Themes';
 
 // components
-import {DRSMenuButton, DRSImage} from '../../Components/index';
+import {DRSMenuButton, DRSImage, DRSHeader} from '../../Components/index';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -23,6 +23,7 @@ function MenuScreen({navigation}) {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.auth);
   const userData = userState.userData.user;
+  console.log('MenuScreen -> userData', userData.avatarUrl);
   const token = userState.userData.token;
   const {fetchingLogout, errorLogout} = userState;
   const [isLogout, setIsLogout] = useState(false);
@@ -71,28 +72,20 @@ function MenuScreen({navigation}) {
 
   return (
     <View style={styles.viewOnScreen}>
-      <TouchableOpacity
-        style={styles.profileContainer}
-        onPress={onPressProfile}>
-        <DRSImage
-          resizeMode={'contain'}
-          source={userData.avatarUrl}
-          imageStyles={styles.avatarImage}
-        />
-        <View>
-          <Text style={styles.nameText}>{userData.fullName}</Text>
-          <Text style={styles.descriptionNameText}>
-            Click to see more your profile !
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <DRSHeader
+        onTitlePress={onPressProfile}
+        imagePress={onPressProfile}
+        contentTitle={'Hello'}
+        headerTitle={userData.fullName}
+        imageSource={userData.avatarUrl}
+      />
       <View>
         <DRSMenuButton
           title={'Edit profile'}
           imageSource={Images.edit}
           onPress={onEditProfile}
         />
-        {/* <DRSMenuButton
+        <DRSMenuButton
           title={'My Message'}
           imageSource={Images.message}
           onPress={() => {Toast.show('Message is coming soon', Toast.SHORT);}}
@@ -101,7 +94,7 @@ function MenuScreen({navigation}) {
           title={'Blocked people'}
           imageSource={Images.block}
           onPress={() => {Toast.show('Blocked people is coming soon', Toast.SHORT);}}
-        /> */}
+        />
         <DRSMenuButton
           title={'Log out'}
           imageSource={Images.disconnect}

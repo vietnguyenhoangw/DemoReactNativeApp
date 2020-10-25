@@ -15,7 +15,7 @@ export default StyleSheet.create({
   containerAvatarPhoto: {
     height: Metrics.quintupleBaseMargin * 2,
     width: Metrics.quintupleBaseMargin * 2,
-    borderColor: Colors.black,
+    borderColor: Colors.greyLight,
     position: 'absolute',
     top: Metrics.screenHeight / 4.8,
     left: Metrics.screenWidth / 2.8,

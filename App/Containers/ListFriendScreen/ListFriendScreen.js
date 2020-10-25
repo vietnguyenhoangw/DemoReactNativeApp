@@ -9,7 +9,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import UserActions from '../../Redux/UserRedux'
 
 // components
-import {DRSFriendCard, DRSLoading} from '../../Components';
+import {DRSFriendCard, DRSLoading, DRSHeader} from '../../Components';
 
 // function
 import {usePrevious} from '../../Functions/AppFunction';
@@ -46,6 +46,7 @@ function ListFriendScreen({navigation}) {
 
   return (
     <View style={styles.viewOnScreen}>
+      <DRSHeader headerTitle={'My Friends'} />
       {friendList ? (
         <FlatList
           showsVerticalScrollIndicator={false}

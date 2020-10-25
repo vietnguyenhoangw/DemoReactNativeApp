@@ -18,11 +18,20 @@ export default StyleSheet.create({
     paddingLeft: Metrics.doubleBaseMargin
   },
   distanceInput: {
-    marginTop: Metrics.quadrupleBaseMargin
+    marginTop: Metrics.baseMargin
   },
   body: {
     flex: 1,
     backgroundColor: Colors.white,
     padding: Metrics.doubleBaseMargin,
+    justifyContent: 'space-between'
+  },
+  image: {
+    width: Metrics.screenWidth - 40,
+    height: Metrics.screenHeight / 3
+  },
+  submitBtn: {
+    marginHorizontal: 0,
+    alignSelf: 'flex-end'
   }
 });

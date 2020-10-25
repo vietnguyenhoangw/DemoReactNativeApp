@@ -9,16 +9,28 @@ export default StyleSheet.create({
         flex: 1,
         margin: Metrics.doubleBaseMargin,
         marginBottom: Metrics.baseMargin,
-        backgroundColor: Colors.greyLight
+        backgroundColor: Colors.white, 
+        borderRadius: 20,
+        shadowColor: '#0000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 2
     },
     header: {
         flexDirection: 'row',
-        margin: Metrics.baseMargin,
+        marginTop: Metrics.baseMargin,
+        marginHorizontal: Metrics.baseMargin * 2,
         alignItems: 'center',
     },
     avatar: {
         height: 40,
         width: 40,
+        borderRadius: 20,
+        marginTop: Metrics.baseMargin,
     },
     userNameText: {
         fontWeight: 'bold'
@@ -32,6 +44,7 @@ export default StyleSheet.create({
         flex: 1
     },
     bottom: {
+        marginTop: Metrics.baseMargin,
         flexDirection: 'row',
         flex: 1,
         justifyContent: 'space-between',
@@ -42,6 +55,7 @@ export default StyleSheet.create({
         padding: 15
     },
     post: {
+        marginTop: Metrics.baseMargin,
         width: '100%',
         height: Metrics.screenHeight / 3,
         backgroundColor: Colors.black

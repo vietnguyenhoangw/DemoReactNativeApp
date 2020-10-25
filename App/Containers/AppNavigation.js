@@ -24,7 +24,9 @@ const AuthStack = createStackNavigator();
 
 function AuthStacks() {
   return (
-    <AuthStack.Navigator initialRouteName="LoginScreen">
+    <AuthStack.Navigator screenOptions={{
+      headerShown: false,
+    }} initialRouteName="LoginScreen">
       <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
     </AuthStack.Navigator>
   );

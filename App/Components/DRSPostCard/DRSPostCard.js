@@ -25,10 +25,10 @@ function DRSPostCard({imageSource, item}) {
           </View>
           <DRSImageButton sourceImage={Images.subMenu} />
         </View>
-        <View style={styles.description}>
+        <DRSViewImage imageSource={url} imageStyles={styles.post} />
+        <View style={styles.header}>
           <Text>{description}</Text>
         </View>
-        <DRSViewImage imageSource={url} imageStyles={styles.post} />
         <View style={styles.header}>
           <Text style={styles.dateText}>{totalLikes} likes |</Text>
           <Text style={styles.dateText}> {totalComments} comments</Text>

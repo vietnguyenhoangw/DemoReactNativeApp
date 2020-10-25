@@ -20,10 +20,18 @@ export default StyleSheet.create({
     padding: 15,
   },
   input: {
-    borderWidth: 1,
+    backgroundColor: Colors.white,
     fontSize: 18,
-    paddingBottom: 10,
+    padding: 15,
     color: Colors.nightRider,
-    marginTop: 10
+    borderRadius: 100,
+    shadowColor: '#0000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 2
   }
 });

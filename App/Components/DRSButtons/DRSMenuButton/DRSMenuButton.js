@@ -11,7 +11,7 @@ function DRSMenuButton({onPress, title, imageSource, style}) {
   return (
     <TouchableOpacity style={[styles.menuButton, style]} onPress={onPress}>
       <View style={styles.commonBtn}>
-        <DRSImage source={imageSource} imageStyles={styles.commonIcon} />
+        <DRSImage resizeMode={'contain'} source={imageSource} imageStyles={styles.commonIcon} />
       </View>
       <Text style={styles.textItemMenu}>{title}</Text>
     </TouchableOpacity>

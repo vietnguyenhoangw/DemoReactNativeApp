@@ -1,13 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 // theme
-import { Metrics } from '../../../Themes'
+import { Colors, Metrics } from '../../../Themes'
 
 export default StyleSheet.create({
   viewOnScreen: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   permisionBtn: {
     padding: Metrics.doubleBaseMargin,

@@ -11,21 +11,31 @@ export default StyleSheet.create({
     marginTop: Metrics.baseMargin,
     marginHorizontal: Metrics.doubleBaseMargin,
     padding: Metrics.baseMargin,
-    backgroundColor: Colors.greyLight
+    backgroundColor: Colors.white,
+    borderRadius: 100,
+    shadowColor: '#0000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation:2,
   },
   commonBtn: {
-    borderWidth: 1,
     borderColor: Colors.white,
-    width: Metrics.quadrupleBaseMargin * 2,
+    width: Metrics.quadrupleBaseMargin,
     height: Metrics.quadrupleBaseMargin,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.nightRider
+    backgroundColor: Colors.nightRider,
+    borderRadius: 100,
   },
   commonIcon: {
     tintColor: Colors.white,
     width: Metrics.doubleBaseMargin,
     height: Metrics.doubleBaseMargin,
+
   },
   textItemMenu: {
     color: Colors.nightRider,

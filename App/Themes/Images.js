@@ -1,6 +1,6 @@
 const images = {
     // Background image 
-    friendsBackground: require('../Images/Backgrounds/friendsBackground.png'),
+    background1: require('../Images/backgrounds/background1.jpg'),
 
     // Icon
     message: require('../Images/icons/message.png'),

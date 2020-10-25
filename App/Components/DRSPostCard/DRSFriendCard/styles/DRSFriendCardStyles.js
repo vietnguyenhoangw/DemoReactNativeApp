@@ -7,16 +7,26 @@ import {Metrics, Colors} from '../../../../Themes';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Metrics.baseMargin,
+    marginVertical: Metrics.smallMargin,
     marginHorizontal: Metrics.baseMargin,
-    backgroundColor: Colors.greyLight,
+    backgroundColor: Colors.white,
     flexDirection: 'row',
     width: Metrics.screenWidth - 20,
-    padding: Metrics.baseMargin
+    padding: Metrics.baseMargin,
+    borderRadius: 100,
+    shadowColor: '#0000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation:2,
   },
   imageStyle: {
     height: Metrics.tabBarHeight,
     width: Metrics.tabBarHeight,
+    borderRadius: 100,
     borderWidth: 1
   },
   nameText:{

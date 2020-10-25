@@ -15,10 +15,11 @@ import {
   DRSImage,
   DRSViewImage,
   DRSLoadingBar,
+  DRSHeader,
 } from '../../Components';
 
 // theme
-import {Images} from '../../Themes';
+import {Images, Metrics} from '../../Themes';
 
 // function
 import {imagePicker} from '../../Functions/ImageFunction';
@@ -27,7 +28,7 @@ import {
   checkCameraPermission,
 } from '../../Functions/PermissionFunction';
 
-function ProfileScreen() {
+function ProfileScreen({navigation}) {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user);
@@ -81,23 +82,14 @@ function ProfileScreen() {
     });
   };
 
+  const onBack = () => {
+    navigation.goBack();
+  };
+
   const renderHeader = () => {
     return (
-      <View>
-        <View>
-          <View style={styles.cameraCoverContainer}>
-            <TouchableOpacity onPress={onPressChangeCoverPhoto}>
-              <DRSImage
-                source={Images.camera}
-                imageStyles={styles.cameraIcon}
-              />
-            </TouchableOpacity>
-          </View>
-          <DRSImage
-            imageStyles={styles.coverPhoto}
-            source={userData.coverUrl}
-          />
-        </View>
+      <View style={styles.headerContainer}>
+        <DRSHeader headerTitle={'My Profile'} leftOnPress={onBack} />
         <View style={styles.containerAvatarPhoto}>
           <DRSViewImage
             imageSource={userData.avatarUrl}
@@ -126,6 +118,11 @@ function ProfileScreen() {
         {fetchingSetAvatar ||
           (fetchingSetCover && <DRSLoadingBar processValue={progressUpload} />)}
         <DRSMultiplePhoto
+          imagesStyle={{
+            borderRadius: 100,
+            width: Metrics.screenWidth / 4,
+            height: Metrics.screenWidth / 4,
+          }}
           containerStyle={styles.multiplePhotoContainer}
           btnOnPressAble={false}
           sourceImage1={newImageUrlList[0]}

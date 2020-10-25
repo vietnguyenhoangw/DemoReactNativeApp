@@ -15,20 +15,18 @@ export default StyleSheet.create({
   containerAvatarPhoto: {
     height: Metrics.quintupleBaseMargin * 2,
     width: Metrics.quintupleBaseMargin * 2,
-    borderColor: Colors.black,
-    position: 'absolute',
-    top: Metrics.screenHeight / 4.8,
-    left: Metrics.screenWidth / 2.8,
+    borderColor: Colors.greyLight,
+    alignSelf: 'center',
   },
   avatarPhoto: {
     height: Metrics.quintupleBaseMargin * 2,
     width: Metrics.quintupleBaseMargin * 2,
+    borderColor: Colors.greyLight,
     borderWidth: 1,
+    borderRadius: 100
   },
   nameContaint: {
-    marginTop: Metrics.tripleBaseMargin,
     marginBottom: 0,
-    paddingTop: Metrics.tripleBaseMargin,
     padding: Metrics.baseMargin,
     margin: Metrics.doubleBaseMargin,
   },
@@ -36,18 +34,22 @@ export default StyleSheet.create({
     fontSize: Metrics.halfQuintupleBaseMargin,
     textAlign: 'center',
     fontWeight: 'bold',
+    color: Colors.textColors
   },
   descriptions: {
-    backgroundColor: Colors.greyLight,
-    padding: Metrics.baseMargin,
+    justifyContent: 'center',
     marginHorizontal: Metrics.doubleBaseMargin,
   },
   descriptionsText: {
-    marginVertical: 4
+    alignSelf: 'center',
+    marginVertical: 4,
+    color: Colors.textColors
   },
   multiplePhotoContainer: {
     marginTop: Metrics.baseMargin,
-    marginBottom: Metrics.baseMargin * 2,
+    marginBottom: Metrics.baseMargin,
+    justifyContent: 'space-between',
+    paddingHorizontal: Metrics.halfTripleBaseMargin,
   },
   cameraContainer: {
     zIndex: 25,
@@ -55,8 +57,10 @@ export default StyleSheet.create({
     right: 0,
     padding: 5,
     borderWidth: 1,
-    backgroundColor: Colors.backgroundGray,
-    position: 'absolute'
+    backgroundColor: Colors.greyLight,
+    position: 'absolute',
+    borderRadius: 100,
+    borderColor: Colors.greyLight,
   },
   cameraIcon: {
     width: 20,
@@ -68,8 +72,29 @@ export default StyleSheet.create({
     zIndex: 25,
     bottom: 10,
     right: 10,
-    padding: 5,
+    padding: Metrics.smallMargin,
     borderWidth: 1,
     backgroundColor: Colors.backgroundGray,
+    shadowColor: '#0000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 2
+  },
+  headerContainer: {
+    borderColor: Colors.pink,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    shadowColor: '#0000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 2
   }
 });

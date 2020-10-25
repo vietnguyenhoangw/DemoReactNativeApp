@@ -28,7 +28,7 @@ function DRSMultiplePhoto({
   return (
     <View style={[containerStyle]}>
       {!viewType ? (
-        <View style={[styles.listImageWrapper, containerStyle]}>
+        <View style={[styles.listImageWrapper]}>
           <DRSImageButton
             btnContainer={styles.btnContainer}
             imagesStyle={[styles.image, imagesStyle]}
