@@ -1,2 +1,4 @@
 import CameraScreen from './CameraScreen';
-export {CameraScreen};
+import PreviewTakenScreen from './PreviewTakenScreen/PreviewTakenScreen';
+
+export {CameraScreen, PreviewTakenScreen};

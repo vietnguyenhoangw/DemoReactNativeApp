@@ -13,7 +13,15 @@ import * as Animatable from 'react-native-animatable';
 import styles from './styles/EditProfileScreenStyles';
 
 // components
-import {RDSTextInputWithTitle, DRSTextButton} from '../../Components/index';
+import {
+  RDSTextInputWithTitle,
+  DRSTextButton,
+  DRSHeader,
+  DRSMenuButton,
+} from '../../Components';
+
+// theme
+import {Images} from '../../Themes'
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -94,25 +102,29 @@ function EditProfileScreen({navigation: {goBack}}) {
 
   return (
     <View style={styles.multiplePhotoContainer}>
+      <DRSHeader headerTitle={'Edit profile'} leftOnPress={onBackPress} />
       {badInput && (
         <Text style={styles.invalidText}>{`${badInputField} is invalid`}</Text>
       )}
       <RDSTextInputWithTitle
-        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        container={styles.container}
+        textInputTitle={styles.input}
         miniTitle={'First Name'}
         placeholder={'First Name'}
         value={firstName}
         onChangeText={(firstNameInput) => onChangeFirstName(firstNameInput)}
       />
       <RDSTextInputWithTitle
-        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        container={styles.container}
+        textInputTitle={styles.input}
         miniTitle={'Last Name'}
         placeholder={'Last Name'}
         value={lastName}
         onChangeText={(lastNameInput) => onChangeLastName(lastNameInput)}
       />
       <RDSTextInputWithTitle
-        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        container={styles.container}
+        textInputTitle={styles.input}
         miniTitle={'Descriptions'}
         placeholder={'Descriptions'}
         value={descriptions}
@@ -121,7 +133,8 @@ function EditProfileScreen({navigation: {goBack}}) {
         }
       />
       <RDSTextInputWithTitle
-        textInputTitle={{marginHorizontal: 8, paddingHorizontal: 8}}
+        container={styles.container}
+        textInputTitle={styles.input}
         miniTitle={'Day of birth'}
         placeholder={'Day of birth'}
         value={dob}
@@ -130,15 +143,20 @@ function EditProfileScreen({navigation: {goBack}}) {
         style={styles.btnContainer}
         ref={refAnimation}
         easing={'ease-in'}>
-        <DRSTextButton
-          title={'Confirm'}
-          conatinerStyle={styles.btnConfirm}
+        <DRSMenuButton
+          title={'Submit'}
           onPress={validateInput}
+          imageSource={Images.tick}
+          style={styles.btnConfirm}
         />
-        <DRSTextButton
+        <DRSMenuButton
           title={'Cancel'}
-          conatinerStyle={styles.btnCancel}
           onPress={onBackPress}
+          imageSource={Images.cancel_black}
+          style={styles.btnCancel}
+          titleStyle={styles.titleStyle}
+          commonBtn={styles.commonBtn}
+          commonIcon={styles.commonIcon}
         />
       </Animatable.View>
     </View>

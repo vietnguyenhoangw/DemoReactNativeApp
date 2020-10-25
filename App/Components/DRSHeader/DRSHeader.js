@@ -11,13 +11,16 @@ import {DRSImage} from '../DRSImage';
 import {Colors, Images} from '../../Themes';
 
 function DRSHeader({
+  imageStyle,
   leftOnPress,
   rightOnPress,
   headerTitle,
   contentTitle,
   imageSource,
   imagePress,
-  onTitlePress
+  onTitlePress,
+  contentTitleStyles,
+  textHeaderStyles
 }) {
   return (
     <View style={styles.container}>
@@ -28,7 +31,7 @@ function DRSHeader({
             style={styles.btnContainer}>
             <DRSImage
               resizeMode={'contain'}
-              imageStyles={styles.btnIcon}
+              imageStyles={[styles.btnIcon, imageStyle]}
               source={Images.blackArrowBack}
             />
           </TouchableOpacity>
@@ -37,7 +40,7 @@ function DRSHeader({
           <TouchableOpacity onPress={rightOnPress} style={styles.btnContainer}>
             <DRSImage
               resizeMode={'contain'}
-              imageStyles={styles.btnIcon}
+              imageStyles={[styles.btnIcon, imageStyle]}
               source={Images.subMenu}
             />
           </TouchableOpacity>
@@ -46,10 +49,10 @@ function DRSHeader({
       <View style={styles.buttonHeaderContainer}>
         <View>
           {contentTitle && (
-            <Text style={styles.contentTitle}>{contentTitle}</Text>
+            <Text style={[styles.contentTitle, contentTitleStyles]}>{contentTitle}</Text>
           )}
           <TouchableOpacity onPress={onTitlePress && onTitlePress}>
-            <Text style={styles.textHeader}>{headerTitle}</Text>
+            <Text style={[styles.textHeader, textHeaderStyles]}>{headerTitle}</Text>
           </TouchableOpacity>
         </View>
         {imageSource && (

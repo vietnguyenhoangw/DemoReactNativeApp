@@ -5,6 +5,8 @@ import {Colors} from '../../Themes';
 
 function RDSTextInputWithTitle(
   {
+    container,
+    miniTitleStyle,
     miniTitle,
     textInputTitle,
     placeholder,
@@ -17,28 +19,21 @@ function RDSTextInputWithTitle(
   ref,
 ) {
   return (
-    <View>
+    <View style={container}>
       {miniTitle && (
         <View
-          style={{
-            backgroundColor: Colors.backgroundGray,
-            position: 'absolute',
-            marginHorizontal: 16,
-            zIndex: 1,
-            paddingHorizontal: 8,
-            marginTop: 2,
-          }}>
+          style={styles.textContainer}>
           <Text
-            style={{
+            style={[{
               fontWeight: 'bold',
-            }}>
+            }, miniTitleStyle]}>
             {miniTitle}
           </Text>
         </View>
       )}
       <TextInput
         style={[styles.input, textInputTitle]}
-        placeholder={placeholder}
+        placeholder={placeholder}     
         secureTextEntry={secureTextEntry}
         onChangeText={onChangeText}
         value={value}

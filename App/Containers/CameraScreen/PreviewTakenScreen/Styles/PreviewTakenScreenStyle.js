@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {color} from 'react-native-reanimated';
 
 // theme
-import {Metrics, Colors, Images} from '../../../Themes';
+import {Metrics, Colors, Images} from '../../../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -59,8 +59,5 @@ export default StyleSheet.create({
   },
   headerText: {
     color: Colors.white
-  },
-  headerIcon: {
-    tintColor: Colors.white
   }
 });

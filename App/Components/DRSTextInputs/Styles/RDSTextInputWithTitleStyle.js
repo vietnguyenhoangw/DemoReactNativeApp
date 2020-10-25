@@ -33,5 +33,13 @@ export default StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 2
+  },
+  textContainer: {
+    backgroundColor: Colors.backgroundGray,
+    position: 'absolute',
+    marginHorizontal: 20,
+    zIndex: 1,
+    paddingHorizontal: 8,
+    marginTop: 2,
   }
 });

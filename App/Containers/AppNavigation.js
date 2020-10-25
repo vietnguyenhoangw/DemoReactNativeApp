@@ -13,7 +13,7 @@ import {EditProfileScreen} from './EditProfileScreen';
 import {LocationScreen} from './LocationScreen';
 import {ListFriendScreen} from './ListFriendScreen';
 import {OtherProfileScreen} from './OtherProfileScreen';
-import {CameraScreen} from './CameraScreen';
+import {CameraScreen, PreviewTakenScreen} from './CameraScreen';
 import {PostingScreen} from './PostingScreen';
 
 // HomeTab
@@ -65,6 +65,7 @@ function AppStacks() {
         component={OtherProfileScreen}
       />
       <AppStack.Screen name="CameraScreen" component={CameraScreen} />
+      <AppStack.Screen name="PreviewTakenScreen" component={PreviewTakenScreen} />
       <AppStack.Screen name="PostingScreen" component={PostingScreen} />
     </AppStack.Navigator>
   );
