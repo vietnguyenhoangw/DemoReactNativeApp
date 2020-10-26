@@ -9,16 +9,19 @@ import PostActions from '../../Redux/PostRedux';
 // styles
 import styles from './Styles/OtherProfileScreenStyles';
 
+// theme
+import {Metrics} from '../../Themes';
+
 //components
 import {
   DRSMultiplePhoto,
   DRSFlatlist,
-  DRSImage,
   DRSViewImage,
   DRSLoading,
+  DRSHeader,
 } from '../../Components';
 
-function OtherProfileScreen({route}) {
+function OtherProfileScreen({navigation, route}) {
   const {cardItem} = route.params;
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
@@ -29,9 +32,10 @@ function OtherProfileScreen({route}) {
   const fetchingGetPostByUserIdRequest = userState.fetchingGetPostByUserId;
 
   let newImageUrlList = [];
-  featuredPhotos && featuredPhotos.filter((item) => {
-    newImageUrlList.push({uri: item.url});
-  });
+  featuredPhotos &&
+    featuredPhotos.filter((item) => {
+      newImageUrlList.push({uri: item.url});
+    });
 
   useEffect(() => {
     if (cardItem) {
@@ -40,23 +44,19 @@ function OtherProfileScreen({route}) {
     }
   }, []);
 
+  const onBack = () => {
+    navigation.goBack();
+  };
+
   const renderHeader = () => {
     return (
-      <View>
-        <View>
-          <DRSImage
-            imageStyles={styles.coverPhoto}
-            source={userData.coverUrl}
-          />
-        </View>
+      <View style={styles.headerContainer}>
+        <DRSHeader headerTitle={userData.fullName} leftOnPress={onBack} />
         <View style={styles.containerAvatarPhoto}>
           <DRSViewImage
             imageSource={userData.avatarUrl}
             imageStyles={styles.avatarPhoto}
           />
-        </View>
-        <View style={styles.nameContaint}>
-          <Text style={styles.nameText}>{userData.fullName}</Text>
         </View>
         <View style={styles.descriptions}>
           <Text style={styles.descriptionsText}>
@@ -70,6 +70,11 @@ function OtherProfileScreen({route}) {
           )}
         </View>
         <DRSMultiplePhoto
+          imagesStyle={{
+            borderRadius: 100,
+            width: Metrics.screenWidth / 4,
+            height: Metrics.screenWidth / 4,
+          }}
           containerStyle={styles.multiplePhotoContainer}
           btnOnPressAble={false}
           sourceImage1={newImageUrlList[0]}
