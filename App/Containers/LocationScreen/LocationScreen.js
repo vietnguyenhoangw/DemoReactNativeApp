@@ -54,7 +54,7 @@ const LocationScreen = () => {
     checkPermissionLocation((result) => {
       dispatch(AppActions.setAllowLocation(result));
     });
-  }, []);
+  });
 
   return null;
 };

@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useEffect} from 'react';
 import OneSignal from 'react-native-onesignal';
 
 const PushNotificationController = () => {
@@ -16,7 +16,7 @@ const PushNotificationController = () => {
   const onOpened = (openResult) => {
     console.log('onOpened -> openResult', openResult);
   };
-  const onIds = (device) => {
+  const onIds = () => {
     // console.log('onIds -> device', device);
   };
 

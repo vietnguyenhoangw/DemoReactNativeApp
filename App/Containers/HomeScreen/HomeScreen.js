@@ -14,6 +14,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 // function
 import {openAppSettings} from '../../Functions/PermissionFunction';
+import {isEmpty} from 'lodash';
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -26,11 +27,11 @@ function HomeScreen() {
   const errorOtherPost = postState.errorOtherPost;
 
   const isNotAllowLocation = () => {
-    const permisionText =
+    const permissionText =
       'Too many post near your location, we need to determine your location.\n\nPlease turn on location services in your phone settings.';
     return (
-      <TouchableOpacity style={styles.permisionBtn} onPress={openAppSettings}>
-        <Text style={styles.permisionText}>{permisionText}</Text>
+      <TouchableOpacity style={styles.permissionBtn} onPress={openAppSettings}>
+        <Text style={styles.permissionText}>{permissionText}</Text>
       </TouchableOpacity>
     );
   };
@@ -41,19 +42,34 @@ function HomeScreen() {
     }
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <DRSHeader headerTitle={'Post around you'} contentTitle={'Discover new posts around you'}/>
-      <View style={styles.viewOnScreen}>
-        {!isAllowLocation ? (
-          isNotAllowLocation()
-        ) : Boolean(post) || errorOtherPost ? (
-          <Text style={styles.permisionText}>
+  const onRefreshData = () => {
+    dispatch(PostAction.getPostRequest(location));
+  };
+
+  const renderList = () => {
+    if (!isAllowLocation) {
+      isNotAllowLocation();
+    } else {
+      if (!isEmpty(post) && isEmpty(errorOtherPost)) {
+        return <DRSFlatlist listData={post} onRefresh={onRefreshData} />;
+      } else {
+        return (
+          <Text style={styles.permissionText}>
             {'Do not have any post around you !'}
           </Text>
-        ) : (
-          <DRSFlatlist listData={post} />
-        )}
+        );
+      }
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <DRSHeader
+        headerTitle={'Post around you'}
+        contentTitle={'Discover new posts around you'}
+      />
+      <View style={styles.viewOnScreen}>
+        {renderList()}
         {fetchingGetOtherPost && <DRSLoading />}
       </View>
     </View>

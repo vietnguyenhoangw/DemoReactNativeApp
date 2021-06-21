@@ -101,7 +101,7 @@ function ProfileScreen({navigation}) {
             <DRSImage source={Images.camera} imageStyles={styles.cameraIcon} />
           </TouchableOpacity>
         </View>
-        <View style={styles.nameContaint}>
+        <View style={styles.nameContain}>
           <Text style={styles.nameText}>{userData.fullName}</Text>
         </View>
         <View style={styles.descriptions}>

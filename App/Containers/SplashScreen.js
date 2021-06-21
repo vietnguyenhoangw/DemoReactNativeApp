@@ -1,11 +1,14 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, ActivityIndicator, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, ActivityIndicator, StyleSheet} from 'react-native';
 
 // redux
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 // function
 import {usePrevious} from '../Functions/AppFunction';
+
+// location
+import {LocationScreen} from './LocationScreen/index';
 
 function SplashScreen({navigation}) {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -44,6 +47,7 @@ function SplashScreen({navigation}) {
   return (
     <SafeAreaView style={styles.mainContainer}>
       <ActivityIndicator />
+      <LocationScreen />
     </SafeAreaView>
   );
 }

@@ -14,9 +14,10 @@ const create = (baseURL = ApiConfig.baseURL + '/polytag') => {
   function getPostApi(token, longitude, latitude) {
     api.setHeaders({Authorization: `Bearer ${token}`});
     return api.get('', {
-      longitude,
-      latitude
-    })
+      longitude: 106.709145,
+      latitude: 10.810583,
+      limit: 100,
+    });
   }
 
   return {

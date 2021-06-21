@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, FlatList, RefreshControl} from 'react-native';
+import {View, FlatList} from 'react-native';
 
 // style
 import styles from './Styles/DRSFlatlistStyle';
@@ -7,7 +7,7 @@ import styles from './Styles/DRSFlatlistStyle';
 // component
 import {DRSPostCard} from '../index';
 
-function DRSFlatlist({listData, renderHeader}) {
+function DRSFlatlist({listData, renderHeader, onRefresh}) {
   const processRenderHeader = () => {
     if (renderHeader) {
       return renderHeader();
@@ -29,12 +29,12 @@ function DRSFlatlist({listData, renderHeader}) {
             data={listData}
             renderItem={renderItem}
             keyExtractor={(item) => item._id}
+            onRefresh={() => onRefresh()}
+            refreshing={false}
           />
         </View>
       ) : (
-        <View>
-          {renderHeader &&renderHeader()}
-        </View>
+        <View>{renderHeader && renderHeader()}</View>
       )}
     </View>
   );

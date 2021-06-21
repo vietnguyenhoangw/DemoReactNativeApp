@@ -1,12 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {
-  Keyboard,
-  View,
-  Text,
-  TouchableOpacity,
-  Alert,
-  SafeAreaViewComponent,
-} from 'react-native';
+import {Keyboard, Text} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 // styles
@@ -15,19 +8,19 @@ import styles from './styles/EditProfileScreenStyles';
 // components
 import {
   RDSTextInputWithTitle,
-  DRSTextButton,
   DRSHeader,
   DRSMenuButton,
 } from '../../Components';
 
 // theme
-import {Images} from '../../Themes'
+import {Images} from '../../Themes';
 
 // redux
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 // utils
 import {isValidTextWithLength} from '../../Utils/Validator';
+import {ScrollView} from 'react-native-gesture-handler';
 
 function EditProfileScreen({navigation: {goBack}}) {
   const userState = useSelector((state) => state.auth);
@@ -101,7 +94,7 @@ function EditProfileScreen({navigation: {goBack}}) {
   }, [isKeyboardVisible]);
 
   return (
-    <View style={styles.multiplePhotoContainer}>
+    <ScrollView contentContainerStyle={styles.multiplePhotoContainer}>
       <DRSHeader headerTitle={'Edit profile'} leftOnPress={onBackPress} />
       {badInput && (
         <Text style={styles.invalidText}>{`${badInputField} is invalid`}</Text>
@@ -159,7 +152,7 @@ function EditProfileScreen({navigation: {goBack}}) {
           commonIcon={styles.commonIcon}
         />
       </Animatable.View>
-    </View>
+    </ScrollView>
   );
 }
 

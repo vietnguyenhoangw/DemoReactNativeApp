@@ -5,7 +5,7 @@ import {Metrics} from '../../../Themes';
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   viewOnScreen: {
     flex: 1,
@@ -14,10 +14,10 @@ export default StyleSheet.create({
   listContainer: {
     backgroundColor: Colors.white,
   },
-  permisionBtn: {
+  permissionBtn: {
     padding: Metrics.doubleBaseMargin,
   },
-  permisionText: {
+  permissionText: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: Metrics.halfTripleBaseMargin + 2,

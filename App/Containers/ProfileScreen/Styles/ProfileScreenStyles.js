@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { color } from 'react-native-reanimated';
+import {color} from 'react-native-reanimated';
 
 // theme
 import {Metrics, Colors, Images} from '../../../Themes';
@@ -23,9 +23,9 @@ export default StyleSheet.create({
     width: Metrics.quintupleBaseMargin * 2,
     borderColor: Colors.greyLight,
     borderWidth: 1,
-    borderRadius: 100
+    borderRadius: 100,
   },
-  nameContaint: {
+  nameContain: {
     marginBottom: 0,
     padding: Metrics.baseMargin,
     margin: Metrics.doubleBaseMargin,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     fontSize: Metrics.halfQuintupleBaseMargin,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: Colors.textColors
+    color: Colors.textColors,
   },
   descriptions: {
     justifyContent: 'center',
@@ -43,7 +43,7 @@ export default StyleSheet.create({
   descriptionsText: {
     alignSelf: 'center',
     marginVertical: 4,
-    color: Colors.textColors
+    color: Colors.textColors,
   },
   multiplePhotoContainer: {
     marginTop: Metrics.baseMargin,
@@ -78,11 +78,11 @@ export default StyleSheet.create({
     shadowColor: '#0000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
-    elevation: 2
+    elevation: 2,
   },
   headerContainer: {
     borderColor: Colors.pink,
@@ -91,10 +91,10 @@ export default StyleSheet.create({
     shadowColor: '#0000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
-    elevation: 2
-  }
+    elevation: 2,
+  },
 });
